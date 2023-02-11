@@ -1,0 +1,34 @@
+---
+  - name: Update and upgrade apt packages
+    become: true
+    apt:
+      upgrade: yes
+      update_cache: yes
+  
+  - name: Install Consul Server
+    apt: 
+      name: consul 
+      state: latest
+
+  - name: Render Consul Configuration Template
+    template:
+      src: config.json.j2
+      dest: /etc/consul.d/consul.json
+    vars:
+      server: "false"
+      datacenter: "dc1"
+      encrypt: "ZENZNrsXU336Uma+S4XUj9sxvICj32N7XdEzrbYbRpY="
+      # start_join: 
+      #     - "172.31.31.142"
+  
+  - name: Render Consul Configuration Template
+    template:
+      src: backend.json.j2
+      dest: /etc/consul.d/backend.json
+  
+  - name: Start Consul Agent Template
+    shell: sudo consul agent -config-dir /etc/consul.d/ &
+    register: consul_start
+    ignore_errors: true
+
+
