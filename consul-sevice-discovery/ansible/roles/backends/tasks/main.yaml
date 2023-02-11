@@ -12,7 +12,7 @@
   
   - name: Copy Nginx Index HTML 
     template:
-      src: index.html
+      src: index.html.j2
       dest: /usr/share/nginx/html/index.html 
   
   - name: Start and enable a service
