@@ -1,3 +1,4 @@
 ---
-  # - include: nginx.yaml
-  - include: consul.yaml
+- tasks:
+    # - include_tasks: nginx.yml
+    - include_tasks: consul.yml

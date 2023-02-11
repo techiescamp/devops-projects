@@ -4,7 +4,7 @@
 
   - name: Download zip file
     get_url:
-      url: {{ consul_template_url}}
+      url: "{{ consul_template_url }}"
       dest: /tmp/consul-template.zip
       mode: 0644
 
