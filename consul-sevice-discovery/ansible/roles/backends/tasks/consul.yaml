@@ -13,7 +13,7 @@
   - name: Render Consul Configuration Template
     template:
       src: config.json.j2
-      dest: /etc/consul.d/consul.json
+      dest: /etc/consul.d/config.json
     vars:
       server: "false"
       datacenter: "dc1"
@@ -21,7 +21,7 @@
       # start_join: 
       #     - "172.31.31.142"
   
-  - name: Render Consul Configuration Template
+  - name: Render Consul Backend Template
     template:
       src: backend.json.j2
       dest: /etc/consul.d/backend.json
