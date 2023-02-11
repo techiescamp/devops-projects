@@ -12,7 +12,7 @@
   
   - name: Render Consul Configuration Template
     template:
-      src: consul.json.j2
+      src: config.json.j2
       dest: /etc/consul.d/consul.json
     vars:
       bind_addr: 0.0.0.0
