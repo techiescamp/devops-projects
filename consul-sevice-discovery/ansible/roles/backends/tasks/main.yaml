@@ -10,11 +10,13 @@
       name: nginx 
       state: latest
   
-  - name: Copy Nginx HTML 
+  - name: Copy Nginx Index HTML 
     template:
       src: index.html
       dest: /usr/share/nginx/html/index.html 
   
-  - name: Start Nginx Server
-    shell: systemctl start nginx 
-    
+  - name: Start and enable a service
+    service:
+      name: nginx
+      state: started
+      enabled: yes

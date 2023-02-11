@@ -1,0 +1,8 @@
+---
+- hosts: backends
+  remote_user: ubuntu
+  become: yes
+
+  roles:
+    - backends
+
