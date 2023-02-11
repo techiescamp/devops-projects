@@ -1,4 +1,4 @@
-## Terraform Steps
+## Provision Instances Using Terraform
 
 Initialize terraform
 
@@ -11,3 +11,5 @@ Provision the instances using the following command.
 ```
 terraform apply
 ```
+## Configure Instances Using Ansible
+
