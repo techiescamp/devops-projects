@@ -1,0 +1,8 @@
+---
+- hosts: consul
+  remote_user: ubuntu
+  become: yes
+
+  roles:
+    - consul
+
