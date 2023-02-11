@@ -1,7 +1,7 @@
 upstream backend {
-{{{- range service "backend" }}}
-  server {{{ .Address }}}:{{{ .Port }}};
-{{{- end }}}
+{{{ {{- range service "backend" }} }}}
+{{{  server {{ .Address }}:{{ .Port }}; }}}
+{{{ {{- end }} }}}
 }
 
 server {
