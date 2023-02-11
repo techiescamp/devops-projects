@@ -3,6 +3,10 @@
   remote_user: ubuntu
   become: yes
 
+  vars:
+    start_join: 
+        - "172.31.31.142"
+
   roles:
     - backends
 

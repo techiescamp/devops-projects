@@ -15,10 +15,10 @@
       name: nginx 
       state: latest
   
-  - name: Copy Nginx Consul Template 
+  - name: Copy Nginx Index HTML 
     template:
-      src: load-balancer.conf.ctmpl.j2
-      dest: /etc/nginx/conf.d/load-balancer.conf.ctmpl
+      src: index.html.j2
+      dest: /var/www/html/index.html 
   
   - name: Start and enable a service
     service:

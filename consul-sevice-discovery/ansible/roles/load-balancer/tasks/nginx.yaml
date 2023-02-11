@@ -14,12 +14,12 @@
     apt: 
       name: nginx 
       state: latest
-  
+
   - name: Copy Nginx Consul Template 
     template:
       src: load-balancer.conf.ctmpl.j2
-      dest: /etc/nginx/conf.d/load-balancer.conf.ctmpl
-  
+      dest: /etc/nginx/conf.d/load-balancer.conf.ctmpl 
+
   - name: Start and enable a service
     service:
       name: nginx
