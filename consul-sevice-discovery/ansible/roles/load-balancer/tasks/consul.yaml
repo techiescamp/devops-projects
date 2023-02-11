@@ -28,7 +28,17 @@
       dest: /etc/nginx/conf.d/consul-template.hcl.j2 
 
   - name: Start Consul Agent Template
-    shell: consul-template -config=/etc/nginx/conf.d/consul-template.hcl
+    shell: consul-template -config=/etc/nginx/conf.d/consul-template.hcl &
+
+  - name: Remove default sites-enabled file 
+    file:
+      path: "/etc/nginx/sites-enabled/default"
+      state: absent
+    notify:
+        - restart nginx
+
+
+  
 
 
 
