@@ -5,7 +5,7 @@
 
   vars:
     start_join: 
-        - "172.31.31.142"
+        - 172.31.31.142
 
   roles:
     - backends
