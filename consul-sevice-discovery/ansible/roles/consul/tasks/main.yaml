@@ -22,7 +22,7 @@
       leave_on_terminate: "true"
       retry_join:
         - server01
-      server: true
+      server: "true"
       log_level: INFO
   
   - name: Start Consul Server
