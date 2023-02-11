@@ -15,11 +15,20 @@
       src: /tmp/consul-template.zip
       dest: /usr/local/bin
       remote_src: yes
+    
+  - name: Copy Consul Template Configuration 
+    template:
+      src: consul-template.hcl.j2
+      dest: /etc/nginx/conf.d/consul-template.hcl
+
+  - name: Copy Nginx Consul Template 
+    template:
+      src: load-balancer.conf.ctmpl.j2
+      dest: /etc/nginx/conf.d/load-balancer.conf.ctmpl 
 
   - name: Start Consul Agent Template
-    shell: consul agent -dev -config-dir /etc/consul.d/ &
-    register: consul_start
-    ignore_errors: true
+    shell: consul-template -config=/etc/nginx/conf.d/consul-template.hcl
+
 
 
 

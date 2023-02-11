@@ -8,3 +8,5 @@
 
   vars:
     consul_template_url: "https://releases.hashicorp.com/consul-template/0.30.0/consul-template_0.30.0_linux_amd64.zip"
+
+    consul_server_address: 172.31.31.142:8500
