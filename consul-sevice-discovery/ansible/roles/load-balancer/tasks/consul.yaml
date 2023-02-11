@@ -20,11 +20,12 @@
     copy:
       src: "files/load-balancer.conf.ctmpl"
       dest: "/etc/nginx/conf.d/load-balancer.conf.ctmpl"
+      remote_src: no 
 
   - name: Copy Nginx Consul Template 
     template:
-      src: load-balancer.conf.ctmpl.j2
-      dest: /etc/nginx/conf.d/load-balancer.conf.ctmpl 
+      src: consul-template.hcl.j2
+      dest: /etc/nginx/conf.d/consul-template.hcl.j2 
 
   - name: Start Consul Agent Template
     shell: consul-template -config=/etc/nginx/conf.d/consul-template.hcl
