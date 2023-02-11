@@ -9,3 +9,18 @@
     apt: 
       name: consul 
       state: latest
+  
+  - name: Render Consul Configuration Template
+    template:
+      src: consul.json.j2
+      dest: /etc/consul.d/consul.json
+    vars:
+      bind_addr: 0.0.0.0
+      data_dir: /var/consul
+      datacenter: dc1
+      ui: true
+      leave_on_terminate: true
+      retry_join:
+        - server01
+      server: true
+      log_level: INFO
