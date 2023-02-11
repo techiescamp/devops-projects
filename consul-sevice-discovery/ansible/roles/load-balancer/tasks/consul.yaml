@@ -15,11 +15,12 @@
       src: /tmp/consul-template.zip
       dest: /usr/local/bin
       remote_src: yes
-    
-  - name: Copy Consul Template Configuration 
-    template:
-      src: consul-template.hcl.j2
-      dest: /etc/nginx/conf.d/consul-template.hcl
+  
+  - name: Copy a file to the target host
+    file:
+      src: files/load-balancer.conf.ctmpl
+      dest: /etc/nginx/conf.d/load-balancer.conf.ctmpl
+      state: file
 
   - name: Copy Nginx Consul Template 
     template:
