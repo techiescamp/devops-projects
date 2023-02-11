@@ -1,4 +1,9 @@
 ---
+  - name: Check operating system
+    debug:
+      msg: "The operating system is {{ ansible_facts['os_family'] }}"
+    when: ansible_facts['os_family'] == "Debian"
+  
   - name: Update and upgrade apt packages
     become: true
     apt:
@@ -13,7 +18,7 @@
   - name: Copy Nginx Index HTML 
     template:
       src: index.html.j2
-      dest: /usr/share/nginx/html/index.html 
+      dest: /var/www/html/index.html 
   
   - name: Start and enable a service
     service:
