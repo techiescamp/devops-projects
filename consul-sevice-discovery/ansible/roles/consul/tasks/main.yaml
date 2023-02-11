@@ -16,16 +16,14 @@
       dest: /etc/consul.d/consul.json
     vars:
       bind_addr: 0.0.0.0
+      client_addr: 0.0.0.0
       data_dir: /var/consul
       datacenter: dc1
       ui: "true"
-      leave_on_terminate: "true"
-      retry_join:
-        - server01
       server: "true"
       log_level: INFO
   
   - name: Start Consul Server
-    shell: consul agent -config-dir /etc/consul.d/
+    shell: onsul agent -dev -config-dir /etc/consul.d/
     args:
       creates: /var/run/consul.pid
