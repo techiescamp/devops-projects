@@ -1,0 +1,20 @@
+---
+  - name: Update and upgrade apt packages
+    become: true
+    apt:
+      upgrade: yes
+      update_cache: yes
+  
+  - name: Install Nginx on Server
+    apt: 
+      name: nginx 
+      state: latest
+  
+  - name: Copy Nginx HTML 
+    template:
+      src: index.html
+      dest: /usr/share/nginx/html/index.html 
+  
+  - name: Start Nginx Server
+    shell: systemctl start nginx 
+    
