@@ -16,11 +16,10 @@
       dest: /usr/local/bin
       remote_src: yes
   
-  - name: Copy a file to the target host
-    file:
-      src: files/load-balancer.conf.ctmpl
-      dest: /etc/nginx/conf.d/load-balancer.conf.ctmpl
-      state: file
+  - name: Copy file from files directory to destination
+    copy:
+      src: "files/load-balancer.conf.ctmpl"
+      dest: "/etc/nginx/conf.d/load-balancer.conf.ctmpl"
 
   - name: Copy Nginx Consul Template 
     template:
