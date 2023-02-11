@@ -20,6 +20,7 @@
       data_dir: /var/consul
       datacenter: dc1
       ui: "true"
+      leave_on_terminate: "true"
       server: "true"
       log_level: INFO
   
