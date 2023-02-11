@@ -25,6 +25,6 @@
       log_level: INFO
   
   - name: Start Consul Server
-    shell: onsul agent -dev -config-dir /etc/consul.d/
+    shell: consul agent -dev -config-dir /etc/consul.d/
     args:
       creates: /var/run/consul.pid
