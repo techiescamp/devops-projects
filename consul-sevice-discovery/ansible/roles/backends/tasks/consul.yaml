@@ -17,9 +17,6 @@
     vars:
       server: "false"
       datacenter: "dc1"
-      encrypt: "ZENZNrsXU336Uma+S4XUj9sxvICj32N7XdEzrbYbRpY="
-      # start_join: 
-      #     - "172.31.31.142"
   
   - name: Render Consul Backend Template
     template:

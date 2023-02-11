@@ -1,17 +1,25 @@
 ---
-  - name: Update and upgrade apt packages
-    become: true
-    apt:
-      upgrade: yes
-      update_cache: yes
-  
-  - name: Install Consul Server
-    apt: 
-      name: consul 
-      state: latest
-  
+
+# In this example, the get_url module is used to download the remote file from the URL
+
+  - name: Download zip file
+    get_url:
+      url: {{ consul_template_url}}
+      dest: /tmp/consul-template.zip
+      mode: 0644
+
+# Note that remote_src is set to yes in the unarchive module, which means the archive file is located on the remote host, not on the control node.
+
+  - name: Unpack zip file
+    unarchive:
+      src: /tmp/consul-template.zip
+      dest: /usr/local/bin
+      remote_src: yes
+
   - name: Start Consul Agent Template
     shell: consul agent -dev -config-dir /etc/consul.d/ &
     register: consul_start
     ignore_errors: true
+
+
 
