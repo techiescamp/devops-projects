@@ -1,6 +1,7 @@
 # General
 .DS_Store
 **/.DS_Store
+**/.terraform.lock.hcl
 .AppleDouble
 .LSOverride
 
