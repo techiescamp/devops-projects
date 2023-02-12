@@ -7,6 +7,12 @@
       url: "{{ consul_template_url }}"
       dest: /tmp/consul-template.zip
       mode: 0644
+  
+  - name: Unpack zip file
+    apt:
+      name: unzip
+      state: latest
+
 
 # Note that remote_src is set to yes in the unarchive module, which means the archive file is located on the remote host, not on the control node.
 
