@@ -13,6 +13,13 @@ terraform apply
 ```
 ## Get all the IP addresses
 
+```
+aws ec2 describe-instances \
+    --filters "Name=tag:Name,Values=consul-server,loadbalancer,backend-app" \
+    --query 'Reservations[].Instances[].[PrivateIpAddress,PublicIpAddress,Tags[?Key==`Name`].Value[]]' \
+    --output text
+```
+
 ## Configure Instances Using Ansible
 
 Configure Consul Server
