@@ -7,7 +7,7 @@
 
   vars:
     start_join: 
-        - 172.31.31.142
+        - 172.31.26.233
     encrypt: "ZENZNrsXU336Uma+S4XUj9sxvICj32N7XdEzrbYbRpY="
 
   roles:
