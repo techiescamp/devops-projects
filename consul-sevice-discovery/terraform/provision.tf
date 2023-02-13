@@ -33,7 +33,7 @@ resource "aws_security_group" "consul_server_sg" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-  
+
   tags = {
     Name = "consul-server-sg"
   }
@@ -100,10 +100,10 @@ resource "aws_security_group" "backends_sg" {
 }
 
 resource "aws_instance" "consul_server" {
-  ami           = "ami-0735c191cf914754d"
-  instance_type = "t2.micro"
+  ami                    = "ami-0735c191cf914754d"
+  instance_type          = "t2.micro"
   vpc_security_group_ids = [aws_security_group.consul_server_sg.id]
-  key_name = "techiescamp"
+  key_name               = "techiescamp"
 
   tags = {
     Name = "consul-server"
@@ -111,10 +111,10 @@ resource "aws_instance" "consul_server" {
 }
 
 resource "aws_instance" "load_balancer" {
-  ami           = "ami-0735c191cf914754d"
-  instance_type = "t2.micro"
-  vpc_security_group_ids = [aws_security_group.backends_sg.id]
-  key_name = "techiescamp"
+  ami                    = "ami-0735c191cf914754d"
+  instance_type          = "t2.micro"
+  vpc_security_group_ids = [aws_security_group.load_balancer_sg.id]
+  key_name               = "techiescamp"
 
   tags = {
     Name = "loadbalancer"
@@ -122,11 +122,11 @@ resource "aws_instance" "load_balancer" {
 }
 
 resource "aws_instance" "backends" {
-  count         = 2
-  ami           = "ami-0735c191cf914754d"
-  instance_type = "t2.micro"
-  vpc_security_group_ids = [aws_security_group.load_balancer_sg.id]
-  key_name = "techiescamp"
+  count                  = 2
+  ami                    = "ami-0735c191cf914754d"
+  instance_type          = "t2.micro"
+  vpc_security_group_ids = [aws_security_group.backends_sg.id]
+  key_name               = "techiescamp"
 
   tags = {
     Name = "backend-app"
