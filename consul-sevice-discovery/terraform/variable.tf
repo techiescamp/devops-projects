@@ -19,7 +19,7 @@ variable "key_name" {
    description = "Key Name"
  }
 
-variable "ingress_cidr_blocks" {
+variable "ingress_cidr_block" {
    type = string
-   description = "The ingress CIDR blocks"
+   description = "The ingress CIDR block"
  }
