@@ -24,7 +24,7 @@ resource "aws_security_group" "consul_server_sg" {
     from_port   = 0
     to_port     = 65000
     protocol    = "tcp"
-    cidr_blocks = ["172.31.0.0/16"]
+    cidr_blocks = [var.ingress_cidr_block]
   }
 
   egress {
