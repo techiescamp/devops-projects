@@ -1,3 +1,7 @@
+## Project Architecture
+
+<<IN progress>
+
 ## Prerequisites
 
 - You need to have a valid AWS account
