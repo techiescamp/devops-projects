@@ -3,13 +3,18 @@ variable "instance_type" {
    description = "EC2 Instance Type"
  }
 
- variable "tag" {
-   type = string
-   description = "The tag for the EC2 instance"
- }
-
  variable "region" {
    type = string
    description = "The project region"
-   default = "eu-central1"
+   default = "us-west-2"
+ }
+
+variable "ami" {
+   type = string
+   description = "The amazon machine image"
+ }
+
+variable "key_name" {
+   type = string
+   description = "Key Name"
  }
