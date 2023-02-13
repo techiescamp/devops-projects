@@ -18,3 +18,8 @@ variable "key_name" {
    type = string
    description = "Key Name"
  }
+
+variable "ingress_cidr_blocks" {
+   type = string
+   description = "The ingress CIDR blocks"
+ }
