@@ -6,8 +6,6 @@
 # use command "consul keygen" to generate a new encryption key: 
 
   vars:
-    start_join: 
-        - 172.31.26.233
     encrypt: "ZENZNrsXU336Uma+S4XUj9sxvICj32N7XdEzrbYbRpY="
 
   roles:
