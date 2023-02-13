@@ -1,6 +1,7 @@
 ## Project Architecture
 
-<<--IN progress-->>
+![image](https://user-images.githubusercontent.com/106984297/218375279-4825a1aa-2537-483b-b324-131e98d1b43a.png | width=60)
+
 
 ## Prerequisites
 
