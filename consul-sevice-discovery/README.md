@@ -1,3 +1,8 @@
+## Prerequisites
+
+- You need to have a valid AWS account
+- A workstation or AWS instance configured with AWS CLI, Ansbile and Terrform with full access to provision ec2 instances.
+
 ## Provision Instances Using Terraform
 
 Initialize terraform
@@ -22,6 +27,8 @@ aws ec2 describe-instances \
 
 ## Configure Instances Using Ansible
 
+Cd in to ansible directory.
+
 Configure Consul Server
 
 ```
@@ -39,6 +46,10 @@ Configure Load Balancer. Replace 172.31.26.233 with private IP of the consul ser
 ```
 ansible-playbook -e "consul_server_address=172.31.31.142:8500" load-balancer.yaml 
 ```
+
+## validate the Setup
+
+If you visit the Loadblancer Ip you should be able to get the custom HTML page with backend server information.
 
 ## Tear Down the Servers
 
