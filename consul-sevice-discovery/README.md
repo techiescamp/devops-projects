@@ -1,6 +1,6 @@
 ## Project Architecture
 
-<<IN progress>
+<<--IN progress-->>
 
 ## Prerequisites
 
