@@ -8,7 +8,7 @@ variable "instance_type" {
    description = "The tag for the EC2 instance"
  }
 
- variable "location" {
+ variable "region" {
    type = string
    description = "The project region"
    default = "eu-central1"
