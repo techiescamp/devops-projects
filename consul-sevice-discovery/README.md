@@ -46,14 +46,6 @@ Provision the instances by applying the configuration.
 ```
 terraform apply -var-file=terraform.tfvars -auto-approve 
 ```
-## Get all the IP addresses
-
-```
-aws ec2 describe-instances \
-    --filters "Name=tag:Name,Values=consul-server,loadbalancer,backend-app" \
-    --query 'Reservations[].Instances[].[PrivateIpAddress,PublicIpAddress,Tags[?Key==`Name`].Value[]]' \
-    --output text
-```
 
 ## Configure Instances Using Ansible
 
