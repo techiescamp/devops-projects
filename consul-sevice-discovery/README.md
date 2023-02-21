@@ -2,7 +2,13 @@
 
 ![service-discovery](https://user-images.githubusercontent.com/106984297/219394737-6f41c9f3-6c34-420b-9da2-9cc819f9c076.png)
 
-## Prerequisites
+## Manual Setup
+
+ If you want to practically learn service discovery, I suggest you set up Nginx load balancing using consul service discovery setup manually and learn all the components and workflows involved in it.
+ 
+ **Checkout the Prctical Guide:** [Service Discovery Example Using Consul & Nginx](https://devopscube.com/service-discovery-example/) 
+
+## Automation Prerequisites
 
 - You need to have a valid AWS account
 - A workstation or AWS instance configured with AWS CLI, Ansbile and Terrform with full access to provision ec2 instances.
