@@ -1,21 +1,17 @@
 ---
-- name: Install Java
-  hosts: all
-  become: true
-  tasks:
-      - name: Update and upgrade apt packages
-        become: true
-        apt:
-           upgrade: yes
-           update_cache: yes
+  - name: Update and upgrade apt packages
+    become: true
+    apt:
+        upgrade: yes
+        update_cache: yes
 
-      - name: Install JRE
-        become: true
-        apt:
-           name: openjdk-17-jre
-           state: latest
+  - name: Install JRE
+    become: true
+    apt:
+      name: openjdk-17-jre
+      state: latest
 
-      - name: Install maven
-        package:
-            name: maven
-            state: latest
+  - name: Install maven
+    package:
+        name: maven
+        state: latest
