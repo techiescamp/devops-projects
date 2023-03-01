@@ -38,3 +38,31 @@ https://github.com/spring-projects/spring-petclinic
 - Verify application by accessing it using Load Balancer endpoint.
 - Verify application logs in Cloudwatch
 
+## Java Application 
+
+Spring boot Petclinic application
+
+```
+git clone https://github.com/techiescamp/java-spring-petclinic
+```
+
+Starting the application with externalized properties file.
+
+```
+java -jar spring-petclinic-3.0.0-SNAPSHOT.jar --spring.config.location=/opt/application.properties
+```
+
+Log Location
+
+```
+/opt/petclinic.log
+```
+
+Change folder persmissions
+
+```
+sudo chown -R petclinic:petclinic /opt
+sudo chmod -R u+w /opt
+```
+
+
