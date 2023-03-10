@@ -1,0 +1,51 @@
+---
+
+# In this example, the get_url module is used to download the remote file from the URL
+
+  - name: Download zip file
+    get_url:
+      url: "{{ consul_template_url }}"
+      dest: /tmp/consul-template.zip
+      mode: 0644
+  
+  - name: Unpack zip file
+    apt:
+      name: unzip
+      state: latest
+
+
+# Note that remote_src is set to yes in the unarchive module, which means the archive file is located on the remote host, not on the control node.
+
+  - name: Unpack zip file
+    unarchive:
+      src: /tmp/consul-template.zip
+      dest: /usr/local/bin
+      remote_src: yes
+  
+  - name: Copy file from files directory to destination
+    copy:
+      src: "files/load-balancer.conf.ctmpl"
+      dest: "/etc/nginx/conf.d/load-balancer.conf.ctmpl"
+      remote_src: no 
+
+  - name: Copy Nginx Consul Template 
+    template:
+      src: consul-template.hcl.j2
+      dest: /etc/nginx/conf.d/consul-template.hcl
+
+  - name: Start Consul Agent Template
+    shell: consul-template -config=/etc/nginx/conf.d/consul-template.hcl &
+
+  - name: Remove default sites-enabled file 
+    file:
+      path: "/etc/nginx/sites-enabled/default"
+      state: absent
+    notify:
+        - restart nginx
+
+
+  
+
+
+
+

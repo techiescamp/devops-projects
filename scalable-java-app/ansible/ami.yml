@@ -1,7 +1,0 @@
----
-- name: Install Java
-  hosts: all
-  become: yes
-
-  roles:
-    - main.yml

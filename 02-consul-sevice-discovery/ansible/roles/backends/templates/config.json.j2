@@ -1,0 +1,11 @@
+{
+    "server": {{ server }},
+    "datacenter": "{{ datacenter }}",
+    "data_dir": "/var/consul",
+    "encrypt": "{{ encrypt }}",
+    "log_level": "INFO",
+    "enable_script_checks": true,
+    "enable_syslog": true,
+    "leave_on_terminate": true,
+    "start_join": [{{ consul_server_address | to_json }}]
+}

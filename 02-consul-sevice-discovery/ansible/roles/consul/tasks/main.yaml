@@ -1,0 +1,46 @@
+---
+  - name: Update and upgrade apt packages
+    become: true
+    apt:
+      upgrade: yes
+      update_cache: yes
+  
+  - name: Install Consul Server
+    apt: 
+      name: consul 
+      state: latest
+  
+  - name: Render Consul Configuration Template
+    template:
+      src: config.json.j2
+      dest: /etc/consul.d/consul.json
+    vars:
+      bind_addr: 0.0.0.0
+      client_addr: 0.0.0.0
+      data_dir: /var/consul
+      encrypt: "ZENZNrsXU336Uma+S4XUj9sxvICj32N7XdEzrbYbRpY="
+      datacenter: dc1
+      ui: "true"
+      leave_on_terminate: "true"
+      server: "true"
+      log_level: INFO
+
+# register is a keyword that allows you to capture the output of a task and store it in a variable for later use.
+  
+  - name: Start Consul Server
+    shell: consul agent -dev -config-dir /etc/consul.d/ &
+    register: consul_start
+    ignore_errors: true
+
+# .rc attribute in register variable is used to access the exit code
+  
+  - name: Check if Consul agent started
+    shell: ps -ef | grep consul | grep -v grep
+    register: consul_check
+    ignore_errors: true
+    when: consul_start.rc == 0
+
+  - name: Fail if Consul agent not started
+    fail:
+      msg: "Consul agent failed to start in the background"
+    when: consul_check.rc != 0

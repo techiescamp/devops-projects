@@ -1,0 +1,22 @@
+---
+  - name: Check operating system
+    debug:
+      msg: "The operating system is {{ ansible_facts['os_family'] }}"
+    when: ansible_facts['os_family'] == "Debian"
+  
+  - name: Update and upgrade apt packages
+    become: true
+    apt:
+      upgrade: yes
+      update_cache: yes
+  
+  - name: Install Nginx on Server
+    apt: 
+      name: nginx 
+      state: latest
+
+  - name: Start and enable a service
+    service:
+      name: nginx
+      state: started
+      enabled: yes

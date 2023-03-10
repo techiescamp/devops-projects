@@ -1,0 +1,4 @@
+---
+  - include: nginx.yaml
+  - include: consul.yaml
+
