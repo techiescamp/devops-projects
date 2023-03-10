@@ -1,4 +1,0 @@
----
-- include_tasks: java.yml
-- include_tasks: jenkins.yml
-- include_tasks: efs.yml

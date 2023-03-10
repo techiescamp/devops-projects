@@ -22,14 +22,14 @@ source "amazon-ebs" "nginx" {
 build {
   sources = ["source.amazon-ebs.nginx"]
 
-  provisioner "ansible-local" {
-  playbook_file = "playbook.yml"
-  inventory_file = "inventory.ini"
-  extra_arguments = [
-    "-e",
-    "efs_mount_point=<EFS_mount_point>",
-    "-e",
-    "jenkins_version=2.303.1",
-  ]
-}
+  provisioner "file" {
+    source = "file/spring-petclinic.jar"
+    destination = "/home/ubuntu/spring-petclinic.jar"
+  }
+
+  provisioner "ansible" {
+    playbook_file = "ami.yml"
+    user = "ubuntu"
+  }
+
 }

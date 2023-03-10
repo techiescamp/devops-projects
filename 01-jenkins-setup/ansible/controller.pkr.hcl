@@ -1,6 +1,6 @@
 variable "ami_id" {
   type    = string
-  default = "ami-0735c191cf914754d "
+  default = "ami-0735c191cf914754d"
 }
 
 locals {
@@ -11,6 +11,7 @@ source "amazon-ebs" "jenkins" {
   ami_name      = "${local.app_name}"
   instance_type = "t2.micro"
   region        = "us-west-2"
+  availability_zone = "us-west-2a"
   source_ami    = "${var.ami_id}"
   ssh_username  = "ubuntu"
   tags = {
@@ -22,13 +23,12 @@ source "amazon-ebs" "jenkins" {
 build {
   sources = ["source.amazon-ebs.jenkins"]
 
-  provisioner "ansible-local" {
+  provisioner "ansible" {
   playbook_file = "jenkins.yaml"
-  extra_arguments = [
-    "-e",
-    "efs_mount_point=<EFS_mount_point>",
-    "-e",
-    "jenkins_version=2.303.1",
-  ]
-}
+  } 
+  
+  post-processor "manifest" {
+    output = "manifest.json"
+    strip_path = true
+  }
 }
