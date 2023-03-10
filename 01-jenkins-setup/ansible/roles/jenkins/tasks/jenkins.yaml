@@ -1,8 +1,17 @@
 ---
+- name: Add Jenkins APT key
+  apt_key:
+    url: https://pkg.jenkins.io/debian-stable/jenkins.io.key
+
+- name: Add Jenkins APT repository
+  apt_repository:
+    repo: deb https://pkg.jenkins.io/debian-stable binary/
+    state: present
+  
 - name: Install Jenkins
   apt:
     name: jenkins=2.387.1
-    state: latest
+    state: present
 
 - name: Manage Jenkins via systemd
   systemd:

@@ -32,9 +32,6 @@ resource "aws_security_group" "efs_sg" {
 resource "aws_efs_file_system" "jenkins" {
   creation_token = "jenkins"
   encrypted      = true
-  lifecycle_policy {
-    transition_to_ia = "AFTER_14_DAYS"
-  }
   performance_mode = "generalPurpose"
   throughput_mode  = "bursting"
   tags = {
