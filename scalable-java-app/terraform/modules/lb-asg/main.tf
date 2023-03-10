@@ -1,23 +1,56 @@
-provider "aws" {
-  region = var.region
+resource "aws_security_group" "alb_sg" {
+  name_prefix = "alb-sg"
+
+  ingress {
+    from_port = 80
+    to_port   = 80
+    protocol  = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "petclinic-alb-sg"
+  }
 }
 
-resource "aws_security_group" "load_balancer_sg" {
-  name        = "load_balancer_security_group"
-  description = "Security group for the load balancer"
-  vpc_id      = aws_default_vpc.default.id
+resource "aws_lb" "petclinic" {
+  name               = "petclinic-alb"
+  internal           = false
+  load_balancer_type = "application"
+
+  subnets            = var.subnets
+  security_groups    = [aws_security_group.alb_sg.id]
+
+  tags = {
+    Environment = var.environment
+    Terraform   = "true"
+  }
+
+  enable_deletion_protection = true
+}
+
+resource "aws_security_group" "instance_sg" {
+  name_prefix = "instance-sg"
+
   ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
+    from_port = 22
+    to_port   = 22
+    protocol  = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
   ingress {
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    from_port = 8080
+    to_port   = 8080
+    protocol  = "tcp"
+    security_groups = [aws_security_group.alb_sg.id]
   }
 
   egress {
@@ -28,70 +61,67 @@ resource "aws_security_group" "load_balancer_sg" {
   }
 
   tags = {
-    Name = "loadbalancer-sg"
+    Name = "petclinic-instance-sg"
   }
 }
 
-resource "aws_default_vpc" "default" {
-  tags = {
-    Name = "Default VPC"
+
+resource "aws_lb_target_group" "petclinic" {
+  name_prefix      = "pc-lb"
+  port             = 8080
+  protocol         = "HTTP"
+  vpc_id           = var.vpc_id
+  target_type      = "instance"
+
+  health_check {
+    path                = "/health"
+    port                = 8080
+    protocol            = "HTTP"
+    interval            = 30
+    timeout             = 5
+    healthy_threshold   = 2
+    unhealthy_threshold = 2
   }
-}
-
-resource "aws_default_subnet" "default_sub_west2a" {
-  availability_zone = "us-west-2a"
-
-  tags = {
-    Name = "Default subnet for us-west-2a"
-  }
-}
-
-resource "aws_default_subnet" "default_sub_west2b" {
-  availability_zone = "us-west-2b"
-
-  tags = {
-    Name = "Default subnet for us-west-2b"
-  }
-}
-
-resource "aws_lb" "loadbalancer" {
-  name               = "petclinic-app-loadbalancer"
-  internal           = true
-  load_balancer_type = "application"
-  security_groups    = [aws_security_group.load_balancer_sg.id]
-  subnets = [
-    "${aws_default_subnet.default_sub_west2a.id}",
-    "${aws_default_subnet.default_sub_west2b.id}",
-  ]
 
   tags = {
-    Name = "application-loadbalancer"
+    Environment = var.environment
+    Terraform   = "true"
   }
 }
 
-resource "aws_launch_template" "packer_pet_clinic" {
-  name_prefix   = "packer-pet-clinic"
-  image_id      = "ami-0de402856ac785a92"
-  instance_type = "t2.micro"
-}
+resource "aws_autoscaling_group" "petclinic" {
+  name                 = "petclinic-asg"
+  max_size             = 3
+  min_size             = 1
+  desired_capacity      = 2
+  vpc_zone_identifier  = var.subnets
+  launch_configuration = aws_launch_configuration.petclinic.id
 
-resource "aws_lb_target_group" "target_group" {
-  name        = "petclinic-tg"
-  port        = 80
-  protocol    = "HTTP"
-  target_type = "instance"
-  vpc_id      = aws_default_vpc.default.id
-  load_balancing_algorithm_type = "round_robin"
-}
-
-resource "aws_autoscaling_group" "autoscaling_group" {
-  availability_zones = ["us-west-2a"]
-  desired_capacity   = 1
-  max_size           = 1
-  min_size           = 1
-  target_group_arns  = [aws_lb_target_group.ip-example.id]
-  launch_template {
-    id      = aws_launch_template.packer_pet_clinic.id
-    version = "$Latest"
+  tag {
+    key                 = "Name"
+    value               = "petclinic-app"
+    propagate_at_launch = true
   }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "aws_launch_configuration" "petclinic" {
+  name_prefix            = "petclinic-lc"
+  image_id               = var.ami_id
+  instance_type          = var.instance_type
+  security_groups        = [aws_security_group.instance_sg.id]
+  key_name               = var.key_name
+  user_data              = filebase64("${path.module}/scripts/user_data.sh")
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "aws_autoscaling_attachment" "petclinic" {
+  autoscaling_group_name = aws_autoscaling_group.petclinic.name
+  alb_target_group_arn   = aws_lb_target_group.petclinic.arn
 }
