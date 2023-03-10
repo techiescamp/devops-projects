@@ -1,0 +1,11 @@
+---
+- name: Install Jenkins on servers
+  hosts: servers
+  become: true
+
+  vars:
+    efs_mount_point: "fs-0902f45cd1a39cdcd.efs.us-west-2.amazonaws.com"
+    jenkins_version: "2.387.1"
+
+  roles:
+    - jenkins_role
