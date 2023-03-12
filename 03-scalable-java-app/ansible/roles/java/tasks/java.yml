@@ -15,3 +15,9 @@
     package:
         name: maven
         state: latest
+
+  - name: Set permissions for /opt
+    file:
+        path: /opt
+        mode: 0755
+        state: directory
