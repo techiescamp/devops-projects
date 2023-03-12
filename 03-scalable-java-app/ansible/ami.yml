@@ -2,6 +2,7 @@
 - name: Install Java
   hosts: all
   become: yes
+  remote_user: ubuntu
 
   roles:
-    - main.yml
+    - java
