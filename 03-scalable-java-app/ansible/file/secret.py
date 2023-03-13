@@ -1,36 +1,37 @@
-import configparser
 import boto3
-from botocore.exceptions import ClientError
+import json
 
+# Define the Secrets Manager client
+secrets_client = boto3.client('secretsmanager')
 
-def get_secret():
+# Define the name of the secret containing the database details
+secret_name = "rds!db-8f23e7a9-e9f8-4b50-a059-f0e310e18134"
 
-    secret_name = "rds!db-8f23e7a9-e9f8-4b50-a059-f0e310e18134"
-    region_name = "us-west-2"
-    
-    session = boto3.session.Session()
-    client = session.client(
-        service_name='secretsmanager',
-        region_name=region_name
-    )
+endpoint_port= "database-1.cvgrek461osh.us-west-2.rds.amazonaws.com:3306"
 
-    try:
-        get_secret_value_response = client.get_secret_value(
-            SecretId=secret_name
-        )
-    except ClientError as e:
-        raise e
+# Retrieve the secret value
+response = secrets_client.get_secret_value(SecretId=secret_name)
 
-    db_credentials = get_secret_value_response['SecretString']
+# Parse the secret value as a JSON object
+secret_value = response['SecretString']
 
-    PROPERTIES_FILE_NAME = "application.properties"
+# Parse the JSON object to retrieve the database details
+database_details = json.loads(secret_value)
 
-    config = configparser.ConfigParser()
-    config.read(PROPERTIES_FILE_NAME)
+# Define the path to the application.properties file
+file_path = "/opt/application.properties"
 
-    config['database']['url'] = db_credentials['url']
-    config['database']['username'] = db_credentials['username']
-    config['database']['password'] = db_credentials['password']
+# Open the file in read mode
+with open(file_path, 'r') as f:
+    # Read the contents of the file into a string
+    file_contents = f.read()
 
-    with open(PROPERTIES_FILE_NAME, 'w') as configfile:
-        config.write(configfile)                                                                                                                                                                                                        
+# Replace the database details in the string
+file_contents = file_contents.replace("spring.datasource.url=jdbc:mysql://localhost:3306/petclinic", f"spring.datasource.url={(endpoint_port)}")
+file_contents = file_contents.replace("spring.datasource.username=petclinic", f"spring.datasource.username={database_details['username']}")
+file_contents = file_contents.replace("spring.datasource.password=petclinic", f"spring.datasource.password={database_details['password']}")
+
+# Open the file in write mode
+with open(file_path, 'w') as f:
+    # Write the updated contents of the file to the file
+    f.write(file_contents)
