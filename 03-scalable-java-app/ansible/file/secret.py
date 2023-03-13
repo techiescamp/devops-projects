@@ -19,7 +19,7 @@ secret_value = response['SecretString']
 database_details = json.loads(secret_value)
 
 # Define the path to the application.properties file
-file_path = "/opt/application.properties"
+file_path = "/home/ubuntu/application.properties"
 
 # Open the file in read mode
 with open(file_path, 'r') as f:
