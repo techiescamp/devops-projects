@@ -1,6 +1,6 @@
 variable "ami_id" {
   type    = string
-  default = "ami-017fecd1353bcc96e"
+  default = "ami-0735c191cf914754d"
 }
 
 locals {
@@ -22,14 +22,23 @@ source "amazon-ebs" "nginx" {
 build {
   sources = ["source.amazon-ebs.nginx"]
 
+  provisioner "ansible" {
+    playbook_file = "ami.yml"
+  }
+
   provisioner "file" {
     source = "file/spring-petclinic.jar"
     destination = "/home/ubuntu/spring-petclinic.jar"
   }
 
-  provisioner "ansible" {
-    playbook_file = "ami.yml"
-    user = "ubuntu"
+  provisioner "file" {
+    source = "file/application.properties"
+    destination = "/home/ubuntu/application.properties"
+  }
+
+  provisioner "file" {
+    source = "file/secret.py"
+    destination = "/home/ubuntu/secret.py"
   }
 
 }
