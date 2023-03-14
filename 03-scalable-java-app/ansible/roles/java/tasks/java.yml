@@ -11,13 +11,8 @@
       name: openjdk-17-jre
       state: latest
 
-  - name: Install maven
-    package:
-        name: maven
-        state: latest
-
-  - name: Set permissions for /opt
+  - name: Make start.sh script executable
+    become: true
     file:
-        path: /opt
-        mode: 0755
-        state: directory
+        path: /home/ubuntu/start.sh
+        mode: '+x'
