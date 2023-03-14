@@ -7,7 +7,7 @@ parameter_store = '/dev/petclinic/rds_endpoint'
 
 secret_name = "rds!db-8f23e7a9-e9f8-4b50-a059-f0e310e18134"
 
-file_path = "/home/aswin/Documents/application.properties"
+file_path = "/home/ubuntu/application.properties"
 
 ssm = boto3.client('ssm', region_name=region)
 
