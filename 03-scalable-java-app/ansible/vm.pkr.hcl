@@ -27,18 +27,18 @@ build {
   }
 
   provisioner "file" {
-    source = "file/spring-petclinic.jar"
+    source = "files/spring-petclinic.jar"
     destination = "/home/ubuntu/spring-petclinic.jar"
   }
 
   provisioner "file" {
-    source = "file/application.properties"
+    source = "files/application.properties"
     destination = "/home/ubuntu/application.properties"
   }
 
   provisioner "file" {
-    source = "file/secret.py"
-    destination = "/home/ubuntu/secret.py"
+    source = "files/secret.py"
+    destination = "/home/ubuntu/properties.py"
   }
 
 }

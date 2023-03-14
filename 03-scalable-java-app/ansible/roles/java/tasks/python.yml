@@ -16,3 +16,9 @@
     pip:
       name: boto3
       state: present
+
+  - name: Install AWS CLI using pip
+    pip:
+      name: awscli
+      state: latest
+      executable: pip3
