@@ -22,10 +22,6 @@ source "amazon-ebs" "nginx" {
 build {
   sources = ["source.amazon-ebs.nginx"]
 
-  provisioner "ansible" {
-    playbook_file = "ami.yml"
-  }
-
   provisioner "file" {
     source = "files/spring-petclinic.jar"
     destination = "/home/ubuntu/spring-petclinic.jar"
@@ -37,8 +33,17 @@ build {
   }
 
   provisioner "file" {
-    source = "files/secret.py"
+    source = "files/properties.py"
     destination = "/home/ubuntu/properties.py"
+  }
+
+  provisioner "file" {
+    source = "files/start.sh"
+    destination = "/home/ubuntu/start.sh"
+  }
+
+  provisioner "ansible" {
+    playbook_file = "ami.yml"
   }
 
 }

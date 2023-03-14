@@ -18,6 +18,7 @@
       state: present
 
   - name: Install AWS CLI using pip
+    become: true
     pip:
       name: awscli
       state: latest
