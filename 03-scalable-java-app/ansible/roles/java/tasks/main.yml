@@ -2,3 +2,4 @@
   - include_tasks: java.yml
   - include_tasks: python.yml
   - include_tasks: cloudwatch.yml
+  - include_tasks: node_exporter.yml
