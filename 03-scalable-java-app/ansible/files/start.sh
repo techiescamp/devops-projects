@@ -1,11 +1,9 @@
 #!/bin/bash
 
 JAR_FILE=/home/ubuntu/spring-petclinic.jar
+APP_PROPERTIES=/home/ubuntu/application.properties
+PROPERTIES_SCRIPT=/home/ubuntu/properties.py
 
-APP_PROP=/home/ubuntu/application.properties
+python3 ${PROPERTIES_SCRIPT}
 
-START_FILE=/home/ubuntu/properties.py
-
-python3 ${START_FILE}
-
-sudo java -jar ${JAR_FILE} --spring.config.location= ${APP_PROP} --spring.profiles.active=mysql &
+sudo java -jar ${JAR_FILE} --spring.config.location= ${APP_PROPERTIES} --spring.profiles.active=mysql &

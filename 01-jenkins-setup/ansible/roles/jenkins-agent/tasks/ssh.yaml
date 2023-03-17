@@ -1,0 +1,17 @@
+
+- name: Retrieve secret value from AWS Parameter Store
+  script: "{{ playbook_dir }}/scripts/get-ssh-pub.py {{ public_key_path }}"
+  args:
+    executable: /usr/bin/python3
+    remote_src: yes
+  register: secret_value
+
+- name: Print registered variable
+  debug:
+    var: secret_value
+
+- name: Add public key to authorized_keys for ubuntu user
+  authorized_key:
+    user: ubuntu
+    state: present
+    key: "{{ secret_value.stdout }}"

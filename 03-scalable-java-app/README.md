@@ -67,4 +67,8 @@ sudo chown -R petclinic:petclinic /opt
 sudo chmod -R u+w /opt
 ```
 
+## Useful Resources
+
+1. [RDS password Rotation With Terraform](https://advancedweb.hu/how-to-set-up-amazon-rds-password-rotation-with-terraform/)
+
 
