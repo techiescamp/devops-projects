@@ -1,0 +1,4 @@
+---
+- include_tasks: base.yaml
+- include_tasks: efs.yaml
+- include_tasks: jenkins.yaml

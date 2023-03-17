@@ -23,23 +23,8 @@ build {
   sources = ["source.amazon-ebs.nginx"]
 
   provisioner "file" {
-    source = "files/spring-petclinic.jar"
+    source = "${WORKSPACE}/target/spring-petclinic.jar"
     destination = "/home/ubuntu/spring-petclinic.jar"
-  }
-
-  provisioner "file" {
-    source = "files/application.properties"
-    destination = "/home/ubuntu/application.properties"
-  }
-
-  provisioner "file" {
-    source = "files/properties.py"
-    destination = "/home/ubuntu/properties.py"
-  }
-
-  provisioner "file" {
-    source = "files/start.sh"
-    destination = "/home/ubuntu/start.sh"
   }
 
   provisioner "ansible" {

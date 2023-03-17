@@ -1,0 +1,11 @@
+---
+- name: Install Jenkins on servers
+  hosts: all
+  become: true
+  remote_user: ubuntu
+
+  vars:
+    public_key_path: "/devops-tools/jenkins/id_rsa.pub"
+  
+  roles:
+    - jenkins-agent
