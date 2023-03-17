@@ -1,0 +1,41 @@
+---
+- name: Add Jenkins APT key
+  apt_key:
+    url: https://pkg.jenkins.io/debian-stable/jenkins.io.key
+
+- name: Add Jenkins APT repository
+  apt_repository:
+    repo: deb https://pkg.jenkins.io/debian-stable binary/
+    state: present
+  
+- name: Install Jenkins
+  apt:
+    name: jenkins=2.387.1
+    state: present
+
+- name: Stop Jenkins service
+  systemd:
+    name: jenkins.service
+    state: stopped
+
+- name: Move Jenkins data to new directory
+  copy: src=/var/lib/jenkins/ dest={{ jenkins_data_dir }} remote_src=yes directory_mode=yes
+
+- name: Remove old Jenkins data directory
+  file:
+    path: /var/lib/jenkins/
+    state: absent
+
+- name: Update Jenkins configuration file
+  lineinfile:
+    path: /etc/default/jenkins
+    regexp: '^JENKINS_HOME='
+    line: "JENKINS_HOME={{ jenkins_data_dir }}"
+
+- name: Manage Jenkins via systemd
+  systemd:
+    name: jenkins
+    enabled: yes
+    state: started
+
+

@@ -1,0 +1,15 @@
+---
+- name: Install Jenkins on servers
+  hosts: all
+  become: true
+  remote_user: ubuntu
+
+  vars:
+    efs_mount_dir: "/data"
+    efs_mount_point: "fs-0902f45cd1a39cdcd.efs.us-west-2.amazonaws.com"
+    jenkins_data_dir: "/data/jenkins"
+    jenkins_version: "2.387.1"
+    ssh_private_key_path: "/devops-tools/jenkins/id_rsa"
+
+  roles:
+    - jenkins-controller

@@ -1,0 +1,12 @@
+---
+- name: Copy files
+  copy:
+    src: "{{ source_dir }}/{{ item }}"
+    dest: "{{ dest_dir }}/{{ item }}"
+  with_items: "{{ files }}"
+
+- name: Make start.sh script executable
+  become: true
+  file:
+      path: /home/ubuntu/start.sh
+      mode: '+x'

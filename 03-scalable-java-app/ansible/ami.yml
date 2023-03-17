@@ -4,5 +4,13 @@
   become: yes
   remote_user: ubuntu
 
+  vars:
+    source_dir: files
+    dest_dir: /home/ubuntu/
+    files:
+      - application.properties
+      - properties.py
+      - script.sh
+
   roles:
     - java
