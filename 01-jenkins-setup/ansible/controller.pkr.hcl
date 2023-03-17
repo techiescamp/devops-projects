@@ -24,7 +24,7 @@ build {
   sources = ["source.amazon-ebs.jenkins"]
 
   provisioner "ansible" {
-  playbook_file = "jenkins.yaml"
+  playbook_file = "jenkins-controller.yaml"
   } 
   
   post-processor "manifest" {
