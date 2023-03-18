@@ -16,4 +16,3 @@
     fstype: nfs4
     opts: nfsvers=4.1
     state: mounted
-

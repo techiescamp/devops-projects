@@ -6,10 +6,10 @@
 
   vars:
     efs_mount_dir: "/data"
-    efs_mount_point: "fs-0902f45cd1a39cdcd.efs.us-west-2.amazonaws.com"
+    efs_mount_point: "fs-0506e3d8c1abc3500.efs.us-west-2.amazonaws.com"
     jenkins_data_dir: "/data/jenkins"
-    jenkins_version: "2.387.1"
-    ssh_private_key_path: "/devops-tools/jenkins/id_rsa"
+    jenkins_lts_version: "2.387.1"
+
 
   roles:
     - jenkins-controller
