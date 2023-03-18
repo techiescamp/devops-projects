@@ -10,7 +10,7 @@
   
 - name: Install Jenkins
   apt:
-    name: jenkins=2.387.1
+    name: jenkins={{ jenkins_lts_version }}
     state: present
 
 - name: Stop Jenkins service
@@ -21,21 +21,38 @@
 - name: Move Jenkins data to new directory
   copy: src=/var/lib/jenkins/ dest={{ jenkins_data_dir }} remote_src=yes directory_mode=yes
 
+- name: Change directory owner
+  file:
+    path: "{{ jenkins_data_dir }}"
+    owner: jenkins
+    group: jenkins
+    recurse: yes
+
 - name: Remove old Jenkins data directory
   file:
     path: /var/lib/jenkins/
     state: absent
 
-- name: Update Jenkins configuration file
-  lineinfile:
-    path: /etc/default/jenkins
-    regexp: '^JENKINS_HOME='
-    line: "JENKINS_HOME={{ jenkins_data_dir }}"
+- name: Create override directory for Jenkins service
+  become: true
+  file:
+    path: /etc/systemd/system/jenkins.service.d
+    state: directory
 
-- name: Manage Jenkins via systemd
+- name: Add override file for Jenkins
+  template:
+    src: override.conf.j2
+    dest: /etc/systemd/system/jenkins.service.d/override.conf
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Reload systemd daemon configuration
+  systemd:
+    daemon_reload: yes
+
+- name: Start Jnekins Service
   systemd:
     name: jenkins
-    enabled: yes
     state: started
-
 
