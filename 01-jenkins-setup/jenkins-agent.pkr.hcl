@@ -4,7 +4,7 @@ variable "ami_id" {
 }
 
 locals {
-  app_name = "jenkins-controller"
+  app_name = "jenkins-agent"
 }
 
 source "amazon-ebs" "jenkins" {
@@ -14,6 +14,7 @@ source "amazon-ebs" "jenkins" {
   availability_zone = "us-west-2a"
   source_ami    = "${var.ami_id}"
   ssh_username  = "ubuntu"
+  iam_instance_profile = "jenkins-instance-profile"
   tags = {
     Env  = "dev"
     Name = "${local.app_name}"
