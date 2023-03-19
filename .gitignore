@@ -5,6 +5,7 @@
 .AppleDouble
 .LSOverride
 **/manifest.json
+.vscode
 
 # Icon must end with two \r
 Icon
