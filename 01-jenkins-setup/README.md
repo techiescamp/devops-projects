@@ -6,20 +6,6 @@
 </p>
 
 
-## Setup Workflow
+## Project Documentation.
 
-EFS is setup in us-west-2a
-Jenkins should be launchd in us-west-2a to access EFS
-
-## Packer
-
-Get AMI ID
-
-```
-
-#!/bin/bash
-
-AMI_ID=$(jq -r '.builds[-1].artifact_id' manifest.json | cut -d ":" -f2)
-echo $AMI_ID
-```
-
+Refer [Jenkins Setup Using AWS Autoscaling Group](https://devopscube.com/jenkins-autoscaling-setup/) for the entire setup walkthrough.
