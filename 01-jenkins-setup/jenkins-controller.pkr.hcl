@@ -3,6 +3,11 @@ variable "ami_id" {
   default = "ami-0735c191cf914754d"
 }
 
+variable "efs_mount_point" {
+  type    = string
+  default = ""
+}
+
 locals {
   app_name = "jenkins-controller"
 }
@@ -25,6 +30,7 @@ build {
 
   provisioner "ansible" {
   playbook_file = "ansible/jenkins-controller.yaml"
+  extra_arguments = [ "--extra-vars", "ami-id=${var.ami_id} efs_mount_point=${var.efs_mount_point}" ]
   } 
   
   post-processor "manifest" {

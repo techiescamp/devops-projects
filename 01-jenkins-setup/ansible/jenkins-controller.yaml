@@ -6,7 +6,6 @@
 
   vars:
     efs_mount_dir: "/data"
-    efs_mount_point: "fs-0506e3d8c1abc3500.efs.us-west-2.amazonaws.com"
     jenkins_data_dir: "/data/jenkins"
     jenkins_lts_version: "2.387.1"
 
