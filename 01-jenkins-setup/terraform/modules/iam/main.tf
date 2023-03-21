@@ -9,7 +9,6 @@ resource "aws_iam_policy" "jenkins_iam_policy" {
       {
         Effect = "Allow"
         Action = [
-          "secretsmanager:GetSecretValue",
           "ssm:GetParameter",
           "ssm:GetParameters",
           "ssm:GetParametersByPath"

@@ -87,6 +87,33 @@ resource "aws_lb_target_group" "jenkins" {
   }
 }
 
+resource "aws_lb_listener" "jenkins" {
+  load_balancer_arn = aws_lb.jenkins.arn
+  port              = 80
+  protocol          = "HTTP"
+
+  default_action {
+    target_group_arn = aws_lb_target_group.jenkins.arn
+    type             = "forward"
+  }
+}
+
+resource "aws_launch_template" "jenkins" {
+  name_prefix = "jenkins-controller-lt"
+  image_id = var.ami_id
+  instance_type = var.instance_type
+  key_name = var.key_name
+
+  network_interfaces {
+    associate_public_ip_address = true
+    security_groups = [aws_security_group.instance_sg.id]
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
 resource "aws_autoscaling_group" "jenkins" {
   name                 = "jenkins-controller-asg"
   max_size             = 1
@@ -110,35 +137,10 @@ resource "aws_autoscaling_group" "jenkins" {
 }
 
 
-resource "aws_launch_template" "jenkins" {
-  name_prefix = "jenkins-controller-lt"
-  image_id = var.ami_id
-  instance_type = var.instance_type
-  key_name = var.key_name
-
-  network_interfaces {
-    associate_public_ip_address = true
-    security_groups = [aws_security_group.instance_sg.id]
-  }
-
-  lifecycle {
-    create_before_destroy = true
-  }
-}
-
 resource "aws_autoscaling_attachment" "jenkins" {
   autoscaling_group_name = aws_autoscaling_group.jenkins.name
   lb_target_group_arn    = aws_lb_target_group.jenkins.arn
 }
 
-resource "aws_lb_listener" "jenkins" {
-  load_balancer_arn = aws_lb.jenkins.arn
-  port              = 80
-  protocol          = "HTTP"
 
-  default_action {
-    target_group_arn = aws_lb_target_group.jenkins.arn
-    type             = "forward"
-  }
-}
 

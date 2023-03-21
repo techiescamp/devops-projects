@@ -3,6 +3,11 @@ variable "ami_id" {
   default = "ami-0735c191cf914754d"
 }
 
+variable "public_key_path" {
+    type = string
+    default = "/devops-tools/jenkins/id_rsa.pub"
+}
+
 locals {
   app_name = "jenkins-agent"
 }
@@ -26,6 +31,7 @@ build {
 
   provisioner "ansible" {
   playbook_file = "ansible/jenkins-agent.yaml"
+  extra_arguments = [ "--extra-vars", "public_key_path=${var.public_key_path}" ]
   } 
   
   post-processor "manifest" {
