@@ -1,4 +1,5 @@
-# devops-projects
+# DevOps Projects
+
 DevOps Real World Projects for Aspiring DevOps Engineers [Beginner to Advanced]
 
 ## List of DevOps Project Ideas
