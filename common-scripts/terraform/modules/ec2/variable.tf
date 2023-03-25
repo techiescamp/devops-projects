@@ -27,28 +27,12 @@ variable "security_group_ids" {
   default = ["sg-01ce819e8d65269f0"]
 }
 
-
-resource "aws_instance" "example" {
-  ami           = var.ami_id
-  instance_type = var.instance_type
-  key_name      = var.key_name
-  vpc_security_group_ids = var.security_group_ids
-  tags = {
-    Name = var.instance_name
-  }
-
-  subnet_id = data.aws_subnet.default.id
-
+variable "instance_count" {
+  type    = number
+  default = 1
 }
 
-data "aws_subnet" "default" {
-  vpc_id = data.aws_vpc.default.id
-  cidr_block = "172.31.32.0/20"
+variable "subnet_ids" {
+  type    = list(string)
+  default = ["subnet-058a7514ba8adbb07", "subnet-0dbcd1ac168414927", "subnet-032f5077729435858"]
 }
-
-
-data "aws_vpc" "default" {
-  default = true
-} 
-
-
