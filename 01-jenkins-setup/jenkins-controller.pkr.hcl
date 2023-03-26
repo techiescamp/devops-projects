@@ -9,7 +9,7 @@ variable "efs_mount_point" {
 }
 
 locals {
-  app_name = "jenkins-controller"
+  app_name = "jenkins-controller-upgrade"
 }
 
 source "amazon-ebs" "jenkins" {
