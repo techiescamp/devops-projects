@@ -1,4 +1,4 @@
-# DevOps Projects
+# Real World DevOps Projects For Learning
 
 DevOps Real World Projects for Aspiring DevOps Engineers [Beginner to Advanced]
 
