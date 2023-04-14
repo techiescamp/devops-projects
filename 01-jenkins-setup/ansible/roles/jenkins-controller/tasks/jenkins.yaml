@@ -1,13 +1,17 @@
 ---
-- name: Add Jenkins APT key
-  apt_key:
-    url: https://pkg.jenkins.io/debian-stable/jenkins.io.key
+- name: Add Jenkins apt repository key.
+  ansible.builtin.get_url:
+    url: "https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key"
+    dest: /etc/apt/trusted.gpg.d/jenkins.asc
+    mode: '0644'
+    force: true
 
-- name: Add Jenkins APT repository
+- name: Add Jenkins apt repository.
   apt_repository:
-    repo: deb https://pkg.jenkins.io/debian-stable binary/
+    repo: "deb https://pkg.jenkins.io/debian-stable binary/"
     state: present
-  
+    update_cache: true
+
 - name: Install Jenkins
   apt:
     name: jenkins={{ jenkins_lts_version }}
