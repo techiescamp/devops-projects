@@ -9,7 +9,7 @@ variable "efs_mount_point" {
 }
 
 locals {
-  app_name = "jenkins-controller-upgrade"
+  app_name = "jenkins-controller-test"
 }
 
 source "amazon-ebs" "jenkins" {
@@ -30,7 +30,7 @@ build {
 
   provisioner "ansible" {
   playbook_file = "ansible/jenkins-controller.yaml"
-  extra_arguments = [ "--extra-vars", "ami-id=${var.ami_id} efs_mount_point=${var.efs_mount_point}" ]
+  extra_arguments = [ "--extra-vars", "ami-id=${var.ami_id} efs_mount_point=${var.efs_mount_point}", "--scp-extra-args", "'-O'", "--ssh-extra-args", "-o IdentitiesOnly=yes -o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedAlgorithms=+ssh-rsa" ]
   } 
   
   post-processor "manifest" {
