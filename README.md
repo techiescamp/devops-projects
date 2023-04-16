@@ -13,7 +13,13 @@ If you are planning to use this repo for learning, please hit the star. Thanks!
 
 All the DevOps Real World Projects are Documented in [Real World DevOps Projects](https://devopscube.com/devops-projects/) blog
 
-## Poroject Videos
+## $300 AWS Free POC Cloud Credits
+
+Utilize the $300 AWS POC credits to try the projects comfortably without any limitation. Every project is assoicates with automation script to provision resoruces. So you can create and destroy them when not needed.
+
+Apply Here: [AWS $300 free POC creditsCloud Platform](https://pages.awscloud.com/adoptf90d_GLOBAL_POC-credits)
+
+## DevOps Project Videos
 
 All the project videos will be availble in Youtube. Following are the publichsed Videos
 
