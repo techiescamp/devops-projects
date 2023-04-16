@@ -2,6 +2,9 @@
 
 DevOps Real World Projects for Aspiring DevOps Engineers [Beginner to Advanced]
 
+## Hit the Star! ⭐
+If you are planning to use this repo for reference, please hit the star. Thanks!
+
 ## DevOps Certification Vouchers
 
 🚀 If you are preparing for CKA, CKAD, CKS, or KCNA exam, **save 30% ($120 Savings)** today using code **APRIL23** at https://kube.promo/devops. It is a limited-time offer. 
