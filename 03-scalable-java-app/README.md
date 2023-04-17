@@ -3,6 +3,12 @@
 
 This project IaC code testing is in progress
 
+## Why you should do this project?
+
+Doing a custommized Ci/CD soltions will form a storng based on CI/CD implemention. Any tool you use would follow the same stragegy. Just that commands. script would have a difference that you can learn easily.
+
+Understanding things to consider in a CI/CD is very important than tooling.
+
 ## Project Architecture
 
 ![java-aws](https://user-images.githubusercontent.com/106984297/219648306-42c0d544-f6e6-423d-9802-9f3d5eca43e8.png)
