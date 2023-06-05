@@ -24,6 +24,9 @@ build {
 
   provisioner "ansible" {
     playbook_file = "prometheus.yml"
+    extra_vars = {
+      consul_server_address = var.consul.server.ip
+    }
   }
 
 }
