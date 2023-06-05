@@ -5,6 +5,11 @@
     dest: "{{ dest_dir }}/{{ item }}"
   with_items: "{{ files }}"
 
+- name: Copy files
+  copy:
+    src: files/application.properties
+    dest: /opt/application.properties
+
 - name: Make start.sh script executable
   become: true
   file:
