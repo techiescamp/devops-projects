@@ -1,0 +1,108 @@
+---
+    - name: Create directories
+      file:
+        path: "{{ item }}"
+        state: directory
+      with_items: "{{ directories }}"
+
+    - name: Change ownership of directories
+      file:
+        path: "{{ item }}"
+        owner: "{{owner}}"
+        group: "{{group}}"
+        recurse: yes
+        state: directory
+      with_items: "{{ directories }}"
+
+    - name: Copy Directories
+      copy:
+        src: "{{ item }}"
+        dest: "/etc/prometheus"
+        remote_src: yes
+      with_items: "{{ source_directories }}" 
+
+    - name: Copy files
+      copy:
+        src: "{{ item }}"
+        dest: /usr/local/bin/
+        remote_src: yes
+      with_items: "{{ source_files }}"
+
+    - name: Create file
+      file:
+        path: /etc/prometheus/prometheus.yml
+        state: touch
+
+    - name: Add lines to file
+      blockinfile:
+        path: /etc/prometheus/prometheus.yml
+        block: |
+          global:
+            scrape_interval: 15s
+            evaluation_interval: 15s
+
+          alerting:
+            alertmanagers:
+              - static_configs:
+                - targets:
+
+          scrape_configs:
+            - job_name: 'jmx_exporter'
+              consul_sd_configs:
+                - server: "{{consul_server_address}}"
+                  services: ['backend']
+              metrics_path: '/metrics'
+
+    - name: Change ownership of directories
+      file:
+        path: "{{ item }}"
+        owner: "{{owner}}"
+        group: "{{group}}"
+        recurse: yes
+      with_items: "{{ paths }}"
+
+    - name: Change ownership of files
+      file:
+        path: "{{ item }}"
+        owner: "{{owner}}"
+        group: "{{group}}"
+      with_items: "{{ files }}"
+
+    - name: Replace file content
+      lineinfile:
+        dest: /etc/prometheus/prometheus.yml
+        line: "{{ item }}"
+        state: present
+      loop:
+        - "global:"
+        - "  scrape_interval: 15s"
+        - "  evaluation_interval: 15s"
+        - ""
+        - "alerting:"
+        - "  alertmanagers:"
+        - "    - static_configs:"
+        - "      - targets:"
+        - ""
+        - "scrape_configs:"
+        - "  - job_name: 'jmx_exporter'"
+        - "    consul_sd_configs:"
+        - "      - server: '35.92.72.191:8500'"
+        - "        services: ['backend']"
+        - "    metrics_path: '/metrics'"
+
+    - name: Make prometheus executable
+      become: true
+      file:
+        path: /usr/local/bin/prometheus
+        mode: '+x'
+
+    - name: Create Prometheus service file
+      template:
+        src: "prometheus.service.j2"
+        dest: "/etc/systemd/system/prometheus.service"
+
+    - name: Start service
+      shell: |
+        sudo systemctl daemon-reload
+        sudo systemctl start prometheus
+        sudo systemctl enable prometheus
