@@ -22,13 +22,11 @@ source "amazon-ebs" "nginx" {
 build {
   sources = ["source.amazon-ebs.nginx"]
 
-  provisioner "file" {
-    source = "${WORKSPACE}/target/spring-petclinic.jar"
-    destination = "/home/ubuntu/spring-petclinic.jar"
-  }
-
   provisioner "ansible" {
     playbook_file = "ami.yml"
+    extra_vars = {
+      consul_server_address = var.consul.server.ip
+    }
   }
 
 }
