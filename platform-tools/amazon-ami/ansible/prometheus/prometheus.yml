@@ -6,8 +6,6 @@
 
   vars:
     
-    consul_server_address: 35.92.72.191:8500
-    
     directories:
       - "/etc/prometheus"
       - "/var/lib/prometheus"
