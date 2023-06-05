@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Server Information</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Techiescamp Backend Demo</a>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="jumbotron">
+        <h3>Server Information</h3>
+        <table class="table table-striped">
+          <tbody>
+            <tr>
+              <td><strong>IP Address</strong></td>
+              <td>{{ ansible_default_ipv4.address }}</td>
+            </tr>
+            <tr>
+              <td><strong>Operating System</strong></td>
+              <td>{{ ansible_os_family }}</td>
+            </tr>
+            <tr>
+              <td><strong>System Version</strong></td>
+              <td>{{ ansible_distribution_version }}</td>
+            </tr>
+            <tr>
+              <td><strong>Memory</strong></td>
+              <td>{{ ansible_memtotal_mb }} MB</td>
+            </tr>
+            <tr>
+              <td><strong>CPU</strong></td>
+              <td>{{ ansible_processor_vcpus }} vCPUs</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
