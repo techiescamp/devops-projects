@@ -1,0 +1,35 @@
+---
+    - name: Update and upgrade apt packages
+      become: true
+      apt:
+        upgrade: yes
+        update_cache: yes
+    
+    - name: Download Prometheus
+      get_url:
+        url: "https://github.com/prometheus/prometheus/releases/download/v2.42.0/prometheus-2.42.0.linux-amd64.tar.gz"
+        dest: "/tmp/prometheus-2.42.0.linux-amd64.tar.gz"
+
+    - name: Extract Prometheus
+      unarchive:
+        src: "/tmp/prometheus-2.42.0.linux-amd64.tar.gz"
+        dest: "/tmp/"
+        remote_src: yes
+    
+    - name: copy directory
+      command: cp -r /tmp/prometheus-2.42.0.linux-amd64 /tmp/prometheus-files
+
+    - name: Create new group
+      group:
+        name: "{{group}}"
+        state: present
+        system: true
+
+    - name: Create new user and add to new group
+      user:
+        name: "{{owner}}"
+        state: present
+        system: true
+        group: "{{group}}"
+        shell: /bin/bash
+        createhome: yes
