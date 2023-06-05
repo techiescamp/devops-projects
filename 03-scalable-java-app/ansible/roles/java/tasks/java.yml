@@ -11,8 +11,8 @@
       name: openjdk-17-jre
       state: latest
 
-  - name: Make start.sh script executable
-    become: true
+  - name: Create log file
     file:
-        path: /home/ubuntu/start.sh
-        mode: '+x'
+        path: /var/log/petclinic.log
+        state: touch
+        mode: '0777'

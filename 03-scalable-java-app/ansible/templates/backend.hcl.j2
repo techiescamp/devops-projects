@@ -1,0 +1,9 @@
+service {
+  Name = "backend"
+  Port = 9090
+
+  check {
+    args = ["curl", "localhost"]
+    interval = "3s"
+  }
+}
