@@ -4,26 +4,26 @@ variable "ami_id" {
 }
 
 locals {
-    app_name = "Nexus"
+    app_name = "grafana"
 }
 
-source "amazon-ebs" "nginx" {
-  ami_name      = "PACKER-${local.app_name}"
+source "amazon-ebs" "grafana" {
+  ami_name      = "packer-${local.app_name}"
   instance_type = "t2.micro"
   region        = "us-west-2"
   source_ami    = "${var.ami_id}"
   ssh_username  = "ubuntu"
   tags = {
-    Env  = "DEMO"
+    Env  = "dev"
     Name = "${local.app_name}"
   }
 }
 
 build {
-  sources = ["source.amazon-ebs.nginx"]
+  sources = ["source.amazon-ebs.nexus"]
 
   provisioner "ansible" {
-    playbook_file = "../ansible/nexus.yml"
+    playbook_file = "grafana.yml"
   }
 
 }
