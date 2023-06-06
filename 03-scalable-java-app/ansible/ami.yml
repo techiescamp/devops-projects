@@ -5,7 +5,6 @@
   remote_user: ubuntu
 
   vars:
-    encrypt: "ZENZNrsXU336Uma+S4XUj9sxvICj32N7XdEzrbYbRpY="
     source_dir: files
     dest_dir: /home/ubuntu/
     files:
