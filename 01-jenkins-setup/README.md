@@ -43,16 +43,6 @@ Done! That really did the trick. Moved forward and was able to deploy the whole 
 
 ### Teardown
 
-```bash
-wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
-echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
-sudo apt update && sudo apt install packer
-```
-
-```bash
-packer build -var "efs_mount_point=fs-0683b367a43270a68.efs.us-west-2.amazonaws.com" jenkins-controller.pkr.hcl
-```
-
 Jenkins Controller AMI were created:
 us-west-2: < ami-id > 
 
