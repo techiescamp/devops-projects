@@ -7,8 +7,8 @@ locals {
     app_name = "Prometheus"
 }
 
-source "amazon-ebs" "nginx" {
-  ami_name      = "PACKER-${local.app_name}"
+source "amazon-ebs" "prometheus" {
+  ami_name      = "packer-${local.app_name}"
   instance_type = "t2.micro"
   region        = "us-west-2"
   source_ami    = "${var.ami_id}"
@@ -20,10 +20,10 @@ source "amazon-ebs" "nginx" {
 }
 
 build {
-  sources = ["source.amazon-ebs.nginx"]
+  sources = ["source.amazon-ebs.prometheus"]
 
   provisioner "ansible" {
-    playbook_file = "prometheus.yml"
+    playbook_file = "../ansible/prometheus.yml"
     extra_vars = {
       consul_server_address = var.consul.server.ip
     }
