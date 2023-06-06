@@ -9,7 +9,7 @@ consul_file_path = "/etc/consul.d/config.hcl"
 
 ssm = boto3.client('ssm', region_name=region)
 
-redis_endpoint = ssm.get_parameter(Name=parameter_store)['Parameter']['Value']
+rds_endpoint = ssm.get_parameter(Name=parameter_store)['Parameter']['Value']
 
 secrets_client = boto3.client('secretsmanager')
 
@@ -22,10 +22,10 @@ database_details = json.loads(secret_value)
 with open(file_path, 'r') as f:
     file_contents = f.read()
 
-with open(consul_file_path, 'a') as f:
+with open(consul_file_path, 'r') as f:
     consul_file = f.read()
 
-file_contents = file_contents.replace("spring.datasource.url=jdbc:mysql://localhost:3306/petclinic", f"spring.datasource.url={redis_endpoint}")
+file_contents = file_contents.replace("spring.datasource.url=jdbc:mysql://localhost:3306/petclinic", f"spring.datasource.url={rds_endpoint}")
 file_contents = file_contents.replace("spring.datasource.username=petclinic", f"spring.datasource.username={database_details['username']}")
 file_contents = file_contents.replace("spring.datasource.password=petclinic", f"spring.datasource.password={database_details['password']}")
 consul_file = consul_file.replace("encrypt = \"{{ encrypt }}\"", f"encrypt={database_details['consul']}")
