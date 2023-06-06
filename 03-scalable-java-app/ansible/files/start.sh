@@ -4,6 +4,8 @@ JAR_FILE=/home/ubuntu/petclinic-3.0.7.jar
 APP_PROPERTIES=/home/ubuntu/application.properties
 PROPERTIES_SCRIPT=/home/ubuntu/properties.py
 
+encrypt=$(aws secretsmanager get-secret-value --secret-id consul-token --query SecretString --output text --region us-west-2 | grep -o '"consul":"[^"]*' | cut -d':' -f2- | sed 's/"//g')
+
 sudo nohup consul agent -config-dir /etc/consul.d/ &
 
 python3 ${PROPERTIES_SCRIPT}
