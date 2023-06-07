@@ -1,0 +1,84 @@
+---
+- name: Install and configure Nexus Repository Manager 3
+  hosts: ubuntu
+  become: true
+  remote_user: ubuntu
+
+  vars:
+    nexus_version: "3.37.0-01"
+
+  tasks:
+    # Install JRE
+
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install Java JDK 8
+      apt:
+        name: openjdk-8-jdk
+        state: present
+
+    # Download Nexus Repository Manager 3
+    - name: Download Nexus
+      get_url:
+        url: "https://download.sonatype.com/nexus/3/nexus-{{ nexus_version }}-unix.tar.gz"
+        dest: "/tmp/nexus-{{ nexus_version }}-unix.tar.gz"
+
+    # Extract Nexus
+    - name: Extract Nexus
+      unarchive:
+        src: "/tmp/nexus-{{ nexus_version }}-unix.tar.gz"
+        dest: "/opt/"
+        remote_src: yes
+        creates: "/opt/nexus-{{ nexus_version }}/"
+
+    # Create a new group
+    - name: Create new group
+      group:
+        name: nexus
+        state: present
+        system: true
+
+    # Create a new user and add to the new group
+    - name: Create new user and add to new group
+      user:
+        name: nexus
+        state: present
+        system: true
+        group: nexus
+        shell: /bin/bash
+        createhome: yes
+
+    # Set the owner of the Nexus directory to the nexus user and group
+    - name: Set ownership of Nexus directory
+      file:
+        path: "/opt/nexus-{{ nexus_version }}/"
+        owner: nexus
+        group: nexus
+        recurse: yes
+
+    - name: Set ownership of sonatype-work directory
+      file:
+        path: "/opt/sonatype-work/"
+        owner: nexus
+        group: nexus
+        recurse: yes
+
+    # Configure Nexus to run as the nexus user
+    - name: Configure Nexus to run as nexus user
+      lineinfile:
+        path: "/opt/nexus-{{ nexus_version }}/bin/nexus.rc"
+        line: 'run_as_user="nexus"'
+
+    # Create a new Nexus service file
+    - name: Create Nexus service file
+      template:
+        src: "nexus.service.j2"
+        dest: "/etc/systemd/system/nexus.service"
+
+    - name: Start service
+      shell: |
+        sudo systemctl daemon-reload
+        sudo systemctl start nexus
+        sudo systemctl enable nexus
