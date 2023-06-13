@@ -7,7 +7,7 @@ If you are planning to use this repo for learning, please hit the star. Thanks!
 
 ## DevOps Certification Vouchers
 
-🚀 If you are preparing for CKA, CKAD, CKS, or KCNA exam, **save 20% ($80 Savings)** today using code **DCUBE20** at https://kube.promo/devops. It is a limited-time offer.
+🚀 If you are preparing for CKA, CKAD, CKS, or KCNA exam, **save up to 40%** at https://kube.promo/devops. It is a limited-time offer. For maximum discount, choose certification bundles.
 
 ## List of DevOps Project Ideas
 
