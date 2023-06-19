@@ -1,4 +1,8 @@
 # Jenkins Setup Using AWS Autoscaling Group, Load Balancer & EFS
+=======
+## Project Course
+
+Detailed Video/Walkthrough Course: [techiescamp.com/courses/deploying-jenkins-aws/](https://techiescamp.com/courses/deploying-jenkins-aws/)
 
 ## My deployment/experience
 
