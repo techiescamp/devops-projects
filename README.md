@@ -7,7 +7,7 @@ If you are planning to use this repo for learning, please hit the star. Thanks!
 
 ## DevOps Certification Vouchers
 
-🚀 If you are preparing for CKA, CKAD, CKS, or KCNA exam, **save up to 40%** at https://kube.promo/devops. It is a limited-time offer. For maximum discount, choose certification bundles.
+🚀 If you are preparing for CKA, CKAD, CKS, or KCNA exam, save 20% today using code **DCUBE20** at https://kube.promo/devops. It is a limited-time offer.
 
 ## List of DevOps Project Ideas
 
@@ -21,6 +21,6 @@ Apply Here: [AWS $300 free POC creditsCloud Platform](https://pages.awscloud.com
 
 ## DevOps Project Videos
 
-All the project videos will be availble in Youtube. Following are the publichsed Videos
+All the project videos will be available on Youtube. Following are the published Videos
 
 1. [Jenkins HA Setup on AWS Using Autoscaling Group Using Packer, Ansible, and Terraform](https://www.youtube.com/watch?v=GLMJhF_cZ5M)
