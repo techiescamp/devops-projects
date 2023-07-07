@@ -1,5 +1,5 @@
 resource "aws_secretsmanager_secret" "rds_secret" {
-  name = "/dev/petclinic/db"
+  name = var.secret_name
 }
 
 resource "random_password" "password" {
@@ -11,7 +11,7 @@ resource "random_password" "password" {
 resource "aws_secretsmanager_secret_version" "rds_secret_value" {
   secret_id = aws_secretsmanager_secret.rds_secret.id
   secret_string = jsonencode({
-    username = "petclinic",
+    username = var.db_username,
     password = random_password.password.result,
   })
 }
@@ -38,9 +38,9 @@ resource "aws_security_group" "rds_security_group" {
 
 
 resource "aws_db_instance" "rds_instance" {
-  identifier               = "petclinic-mysql-rds"
+  identifier               = var.db_name
   engine                   = "mysql"
-  instance_class           = "db.t2.micro"
+  instance_class           = var.db_instance_class
   allocated_storage        = 10
   storage_type             = "gp2"
   username                 = jsondecode(aws_secretsmanager_secret_version.rds_secret_value.secret_string)["username"]
@@ -67,7 +67,7 @@ data "aws_db_instance" "rds_instance" {
 
 
 resource "aws_ssm_parameter" "rds_endpoint" {
-  name  = "/dev/petclinic/rds_endpoint"
+  name  = var.parameter_name
   type  = "String"
   value = data.aws_db_instance.rds_instance.endpoint
 }
