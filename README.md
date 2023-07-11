@@ -1,4 +1,4 @@
-# Real World DevOps Projects For Learning
+# Real-World DevOps Projects For Learning
 
 DevOps Real World Projects for Aspiring DevOps Engineers [Beginner to Advanced]
 
@@ -17,7 +17,7 @@ All the DevOps Real World Projects are Documented in [Real World DevOps Projects
 
 Utilize the $300 AWS POC credits to try the projects comfortably without any limitations. Every project is associated with an automation script to provision resources. So you can create and destroy them when not needed.
 
-Apply Here: [AWS $300 free POC creditsCloud Platform](https://pages.awscloud.com/adoptf90d_GLOBAL_POC-credits)
+Apply Here: [AWS $300 free POC creditsCloud Platform](https://pages.awscloud.com/GLOBAL_NCA_LN_ARRC-program-A300-2023.html)
 
 ## DevOps Project Videos
 
