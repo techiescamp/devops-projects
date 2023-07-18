@@ -7,7 +7,9 @@ If you are planning to use this repo for learning, please hit the star. Thanks!
 
 ## DevOps Certification Vouchers
 
-🚀  CKA, CKAD, CKS, or KCNA exam aspirants can **save $80** today using code **DCUBE20** at https://kube.promo/devops. It is a limited-time offer from Linux Foundation
+🚀  CKA, CKAD, CKS, or KCNA exam aspirants can **save $100** today using code **JULY23100** at https://kube.promo/devops. It is a limited-time offer from Linux Foundation
+
+For the best savings, opt for the CKA + CKS bundle (**$210 Savings)**. Use code **DCUBE20** at https://kube.promo/bundle
 
 ## List of DevOps Project Ideas
 
