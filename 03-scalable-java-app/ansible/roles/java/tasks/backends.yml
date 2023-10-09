@@ -4,12 +4,6 @@
       msg: "The operating system is {{ ansible_facts['os_family'] }}"
     when: ansible_facts['os_family'] == "Debian"
   
-  - name: Update and upgrade apt packages
-    become: true
-    apt:
-      upgrade: yes
-      update_cache: yes
-  
   - name: Install Nginx on Server
     apt: 
       name: nginx 
@@ -26,16 +20,26 @@
       state: started
       enabled: yes
 
-  - name: Update and upgrade apt packages
-    become: true
+  - name: Update apt cache
     apt:
-      upgrade: yes
       update_cache: yes
-  
-  - name: Install Consul Server
-    apt: 
-      name: consul 
-      state: latest
+
+  - name: Install required packages
+    apt:
+      name:
+        - wget
+        - gnupg
+
+  - name: Add HashiCorp GPG key and repository
+    shell: |
+      wget -qO - https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
+      echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+
+  - name: Update apt cache and install Consul
+    apt:
+      update_cache: yes
+      name: consul
+      state: present
 
   - name: Render Consul Configuration Template
     template:
@@ -49,8 +53,18 @@
     template:
       src: backend.hcl.j2
       dest: /etc/consul.d/backend.hcl
-  
-  - name: Start Consul Agent Template
-    shell: sudo consul agent -config-dir /etc/consul.d/ &
-    register: consul_start
-    ignore_errors: true
+
+  - name: Create Consul systemd service unit
+    template:
+      src: consul.service.j2
+      dest: /etc/systemd/system/consul.service
+    
+  - name: Reload systemd
+    systemd:
+      daemon_reload: yes
+
+  - name: Start and enable Consul service
+    systemd:
+      name: consul
+      state: started
+      enabled: yes
