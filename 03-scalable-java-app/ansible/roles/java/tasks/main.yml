@@ -3,6 +3,5 @@
   - include_tasks: python.yml
   - include_tasks: backends.yml
   - include_tasks: cloudwatch.yml
-  - include_tasks: node_exporter.yml
-  - include_tasks: app.yaml
+  - include_tasks: app.yml
 

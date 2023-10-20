@@ -3,9 +3,9 @@ resource "aws_secretsmanager_secret" "rds_secret" {
 }
 
 resource "random_password" "password" {
-  length           = 8
-  special          = true
-  override_special = "_@%"
+  length           = var.password_length
+  special          = var.special_characters
+  override_special = var.override_special
 }
 
 resource "aws_secretsmanager_secret_version" "rds_secret_value" {
@@ -18,45 +18,52 @@ resource "aws_secretsmanager_secret_version" "rds_secret_value" {
 
 # Create a DB security group
 resource "aws_security_group" "rds_security_group" {
-  name        = "rds-security-group"
+  name        = "${var.environment}-${var.application}-rds-sg"
   description = "Security group for RDS instance"
 
   ingress {
-    from_port   = 3306
-    to_port     = 3306
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    from_port   = var.ingress_from_port
+    to_port     = var.ingress_to_port
+    protocol    = var.ingress_protocol
+    cidr_blocks = var.ingress_cidr_blocks
   }
 
   egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
+    from_port   = var.egress_from_port
+    to_port     = var.egress_to_port
+    protocol    = var.egress_protocol
+    cidr_blocks = var.egress_cidr_blocks
   }
 }
 
 
 resource "aws_db_instance" "rds_instance" {
-  identifier               = var.db_name
-  engine                   = "mysql"
+  identifier               = "${var.environment}-${var.application}-rds-sg"
+  engine                   = var.db_engine
   instance_class           = var.db_instance_class
-  allocated_storage        = 10
-  storage_type             = "gp2"
+  allocated_storage        = var.db_storage
+  storage_type             = var.db_storage_type
   username                 = jsondecode(aws_secretsmanager_secret_version.rds_secret_value.secret_string)["username"]
   password                 = jsondecode(aws_secretsmanager_secret_version.rds_secret_value.secret_string)["password"]
-  db_subnet_group_name     = "default"
+  db_subnet_group_name     = var.db_subnet_group
   vpc_security_group_ids   = [aws_security_group.rds_security_group.id]
-  backup_retention_period  = 7
-  delete_automated_backups = true
-  copy_tags_to_snapshot    = true
-  publicly_accessible      = true
-  skip_final_snapshot      = true
-  apply_immediately        = true
+  backup_retention_period  = var.backup_retention_period
+  delete_automated_backups = var.delete_automated_backups
+  copy_tags_to_snapshot    = var.copy_tags_to_snapshot
+  publicly_accessible      = var.publicly_accessible
+  skip_final_snapshot      = var.skip_final_snapshot
+  apply_immediately        = var.apply_immediately
 
-  tags = {
-    Name = "petclinic-rds"
-  }
+  tags = merge(
+  {
+    Name        = "${var.environment}-${var.application}-ssm",
+    Environment = var.environment,
+    Owner       = var.owner,
+    CostCenter  = var.cost_center,
+    Application = var.application,
+  },
+  var.tags
+  )
 
 }
 
@@ -68,6 +75,6 @@ data "aws_db_instance" "rds_instance" {
 
 resource "aws_ssm_parameter" "rds_endpoint" {
   name  = var.parameter_name
-  type  = "String"
+  type  = var.parameter_type
   value = data.aws_db_instance.rds_instance.endpoint
 }
