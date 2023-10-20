@@ -93,7 +93,7 @@ resource "aws_autoscaling_group" "petclinic" {
   name                 = "petclinic-asg"
   max_size             = 3
   min_size             = 1
-  desired_capacity      = 2
+  desired_capacity     = 2
   vpc_zone_identifier  = var.subnets
   launch_configuration = aws_launch_configuration.petclinic.id
 
@@ -123,5 +123,5 @@ resource "aws_launch_configuration" "petclinic" {
 
 resource "aws_autoscaling_attachment" "petclinic" {
   autoscaling_group_name = aws_autoscaling_group.petclinic.name
-  alb_target_group_arn   = aws_lb_target_group.petclinic.arn
+  lb_target_group_arn   = aws_lb_target_group.petclinic.arn
 }

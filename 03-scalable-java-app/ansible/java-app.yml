@@ -1,0 +1,16 @@
+---
+- name: Install Java
+  hosts: all
+  become: yes
+  remote_user: ubuntu
+
+  vars:
+    source_dir: files
+    dest_dir: /home/ubuntu/
+    files:
+      - properties.py
+      - start.sh
+      - pet-clinic-1.0.1.jar
+
+  roles:
+    - java
