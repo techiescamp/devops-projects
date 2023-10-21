@@ -1,5 +1,5 @@
 resource "aws_security_group" "alb_sg" {
-  name_prefix = "alb-sg"
+  name_prefix = "${var.environment}-${var.application}-alb-sg"
 
   ingress {
     from_port   = var.ingress_alb_from_port
@@ -15,9 +15,16 @@ resource "aws_security_group" "alb_sg" {
     cidr_blocks = var.egress_alb_cidr_blocks
   }
 
-  tags = {
-    Name = "petclinic-alb-sg"
-  }
+  tags = merge(
+    {
+      Name        = "${var.environment}-${var.application}-alb-sg",
+      Environment = var.environment,
+      Owner       = var.owner,
+      CostCenter  = var.cost_center,
+      Application = var.application
+    },
+    var.tags
+  )
 }
 
 resource "aws_alb" "application_load_balancer" {
