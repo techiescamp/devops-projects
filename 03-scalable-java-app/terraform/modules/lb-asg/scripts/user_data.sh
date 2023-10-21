@@ -1,1 +1,0 @@
-/home/ubuntu/start.sh
