@@ -24,3 +24,7 @@ Apply Here: [AWS $300 free POC creditsCloud Platform](https://pages.awscloud.com
 All the project videos will be availble in Youtube. Following are the publichsed Videos
 
 1. [Jenkins HA Setup on AWS Using Autoscaling Group Using Packer, Ansible, and Terraform](https://www.youtube.com/watch?v=GLMJhF_cZ5M)
+
+
+
+terraform plan -var-file=../vars/rds.tfvars
