@@ -82,3 +82,18 @@ sudo chmod -R u+w /opt
 1. [RDS password Rotation With Terraform](https://advancedweb.hu/how-to-set-up-amazon-rds-password-rotation-with-terraform/)
 
 
+### RDS
+
+terraform plan -var-file=../vars/rds.tfvars
+
+terraform apply -var-file=../vars/rds.tfvars
+
+terraform destroy -var-file=../vars/rds.tfvars
+
+### ALB_ASG
+
+terraform plan -var-file=../vars/alb-asg.tfvars
+
+terraform apply -var-file=../vars/alb-asg.tfvars
+
+terraform destroy -var-file=../vars/alb-asg.tfvars

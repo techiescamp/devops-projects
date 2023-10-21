@@ -25,19 +25,3 @@ All the project videos will be availble in Youtube. Following are the publichsed
 
 1. [Jenkins HA Setup on AWS Using Autoscaling Group Using Packer, Ansible, and Terraform](https://www.youtube.com/watch?v=GLMJhF_cZ5M)
 
-
-### RDS
-
-terraform plan -var-file=../vars/rds.tfvars
-
-terraform apply -var-file=../vars/rds.tfvars
-
-terraform destroy -var-file=../vars/rds.tfvars
-
-### ALB_ASG
-
-terraform plan -var-file=../vars/alb-asg.tfvars
-
-terraform apply -var-file=../vars/alb-asg.tfvars
-
-terraform destroy -var-file=../vars/alb-asg.tfvars
