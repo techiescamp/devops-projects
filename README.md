@@ -1,4 +1,4 @@
-# Real World DevOps Projects For Learning
+# Real-World DevOps Projects For Learning
 
 DevOps Real World Projects for Aspiring DevOps Engineers [Beginner to Advanced]
 
@@ -7,7 +7,12 @@ If you are planning to use this repo for learning, please hit the star. Thanks!
 
 ## DevOps Certification Vouchers
 
-🚀 If you are preparing for CKA, CKAD, CKS, or KCNA exam, **save 20% ($80 Savings)** today using code **DCUBE20** at https://kube.promo/devops. It is a limited-time offer.
+- 🚀  CKA, CKAD, CKS, or KCNA exam aspirants can **save 35%** today using code **HACK35** at https://kube.promo/devops. It is a limited-time offer from the Linux Foundation.
+- For the best savings, opt for the CKA + CKS bundle (**$310 Savings)**. Use code **HACK35** at https://kube.promo/bundle
+
+Note: You have one year of validity to appear for the certification exam after registration
+>Note: You have one year of validity to appear for the certification exam after registration
+
 
 ## List of DevOps Project Ideas
 
@@ -17,11 +22,11 @@ All the DevOps Real World Projects are Documented in [Real World DevOps Projects
 
 Utilize the $300 AWS POC credits to try the projects comfortably without any limitations. Every project is associated with an automation script to provision resources. So you can create and destroy them when not needed.
 
-Apply Here: [AWS $300 free POC creditsCloud Platform](https://pages.awscloud.com/adoptf90d_GLOBAL_POC-credits)
+Apply Here: [AWS $300 free POC creditsCloud Platform](https://pages.awscloud.com/GLOBAL_NCA_LN_ARRC-program-A300-2023.html)
 
 ## DevOps Project Videos
 
-All the project videos will be availble in Youtube. Following are the publichsed Videos
+All the project videos will be available on Youtube. Following are the published Videos
 
 1. [Jenkins HA Setup on AWS Using Autoscaling Group Using Packer, Ansible, and Terraform](https://www.youtube.com/watch?v=GLMJhF_cZ5M)
 
