@@ -1,46 +1,51 @@
 ---
-  - name: Update and upgrade apt packages
-    become: true
-    apt:
-      upgrade: yes
-      update_cache: yes
-  
-  - name: Install Consul Server
-    apt: 
-      name: consul 
-      state: latest
-  
-  - name: Render Consul Configuration Template
-    template:
-      src: config.json.j2
-      dest: /etc/consul.d/consul.json
-    vars:
-      bind_addr: 0.0.0.0
-      client_addr: 0.0.0.0
-      data_dir: /var/consul
-      encrypt: "ZENZNrsXU336Uma+S4XUj9sxvICj32N7XdEzrbYbRpY="
-      datacenter: dc1
-      ui: "true"
-      leave_on_terminate: "true"
-      server: "true"
-      log_level: INFO
+    - name: Update apt cache
+      apt:
+        update_cache: yes
 
-# register is a keyword that allows you to capture the output of a task and store it in a variable for later use.
-  
-  - name: Start Consul Server
-    shell: consul agent -dev -config-dir /etc/consul.d/ &
-    register: consul_start
-    ignore_errors: true
+    - name: Install required packages
+      apt:
+        name:
+          - wget
+          - gnupg
 
-# .rc attribute in register variable is used to access the exit code
-  
-  - name: Check if Consul agent started
-    shell: ps -ef | grep consul | grep -v grep
-    register: consul_check
-    ignore_errors: true
-    when: consul_start.rc == 0
+    - name: Add HashiCorp GPG key and repository
+      shell: |
+        wget -qO - https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
+        echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
 
-  - name: Fail if Consul agent not started
-    fail:
-      msg: "Consul agent failed to start in the background"
-    when: consul_check.rc != 0
+    - name: Update apt cache and install Consul
+      apt:
+        update_cache: yes
+        name: consul
+        state: present
+
+    - name: Render Consul Configuration Template
+      template:
+        src: consul.hcl.j2
+        dest: /etc/consul.d/consul.hcl
+      vars:
+        bind_addr: 0.0.0.0
+        client_addr: 0.0.0.0
+        data_dir: /var/consul
+        encrypt: "ZENZNrsXU336Uma+S4XUj9sxvICj32N7XdEzrbYbRpY="
+        datacenter: dc1
+        ui: "true"
+        leave_on_terminate: "true"
+        server: "true"
+        log_level: INFO
+
+    - name: Create Consul systemd service unit
+      template:
+        src: consul.service.j2
+        dest: /etc/systemd/system/consul.service
+    
+    - name: Reload systemd
+      systemd:
+        daemon_reload: yes
+
+    - name: Start and enable Consul service
+      systemd:
+        name: consul
+        state: started
+        enabled: yes

@@ -3,6 +3,12 @@
 
 This project IaC code testing is in progress
 
+## Why you should do this project?
+
+Doing a custommized Ci/CD soltions will form a storng based on CI/CD implemention. Any tool you use would follow the same stragegy. Just that commands. script would have a difference that you can learn easily.
+
+Understanding things to consider in a CI/CD is very important than tooling.
+
 ## Project Architecture
 
 ![java-aws](https://user-images.githubusercontent.com/106984297/219648306-42c0d544-f6e6-423d-9802-9f3d5eca43e8.png)
@@ -76,3 +82,18 @@ sudo chmod -R u+w /opt
 1. [RDS password Rotation With Terraform](https://advancedweb.hu/how-to-set-up-amazon-rds-password-rotation-with-terraform/)
 
 
+### RDS
+
+terraform plan -var-file=../vars/rds.tfvars
+
+terraform apply -var-file=../vars/rds.tfvars
+
+terraform destroy -var-file=../vars/rds.tfvars
+
+### ALB_ASG
+
+terraform plan -var-file=../vars/alb-asg.tfvars
+
+terraform apply -var-file=../vars/alb-asg.tfvars
+
+terraform destroy -var-file=../vars/alb-asg.tfvars

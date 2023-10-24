@@ -1,0 +1,13 @@
+[Unit]
+Description=Consul service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/consul agent -dev -config-dir /etc/consul.d
+Restart=always
+User=root
+Group=nogroup
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target

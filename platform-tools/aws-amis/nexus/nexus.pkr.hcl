@@ -4,7 +4,7 @@ variable "ami_id" {
 }
 
 locals {
-    app_name = "pet-clinic"
+    app_name = "Nexus"
 }
 
 source "amazon-ebs" "nginx" {
@@ -15,20 +15,15 @@ source "amazon-ebs" "nginx" {
   ssh_username  = "ubuntu"
   tags = {
     Env  = "DEMO"
-    Name = "PACKER-${local.app_name}"
+    Name = "${local.app_name}"
   }
 }
 
 build {
   sources = ["source.amazon-ebs.nginx"]
 
-  provisioner "file" {
-    source = "${WORKSPACE}/target/spring-petclinic.jar"
-    destination = "/home/ubuntu/spring-petclinic.jar"
-  }
-
   provisioner "ansible" {
-    playbook_file = "ami.yml"
+    playbook_file = "../ansible/nexus.yml"
   }
 
 }
