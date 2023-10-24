@@ -1,0 +1,35 @@
+---
+- name: Install and Configure Prometheus
+  hosts: all
+  become: true
+  remote_user: ubuntu
+
+  vars:
+    
+    directories:
+      - "/etc/prometheus"
+      - "/var/lib/prometheus"
+
+    owner: prometheus
+
+    group: prometheus
+
+    source_directories:
+      - "/tmp/prometheus-files/consoles"
+      - "/tmp/prometheus-files/console_libraries"
+
+    source_files:
+      - "/tmp/prometheus-files/prometheus"
+      - "/tmp/prometheus-files/promtool"
+
+    paths:
+      - "/etc/prometheus/consoles"
+      - "/etc/prometheus/console_libraries"
+
+    files:
+      - "/usr/local/bin/prometheus"
+      - "/usr/local/bin/promtool"
+      - "/etc/prometheus/prometheus.yml"
+
+  roles:
+    - prometheus

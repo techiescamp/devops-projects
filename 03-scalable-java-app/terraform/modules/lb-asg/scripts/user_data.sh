@@ -1,1 +1,0 @@
-nohup java -jar petclinic-app.jar --spring.config.location=/ubuntu/deployment/application.properties --spring.profiles.active=mysql &

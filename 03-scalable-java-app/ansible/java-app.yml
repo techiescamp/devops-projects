@@ -8,9 +8,8 @@
     source_dir: files
     dest_dir: /home/ubuntu/
     files:
-      - application.properties
       - properties.py
-      - script.sh
+      - start.sh
 
   roles:
     - java
