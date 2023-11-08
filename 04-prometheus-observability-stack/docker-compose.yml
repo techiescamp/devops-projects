@@ -1,0 +1,57 @@
+version: '3.3'
+
+services:
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - 9090:9090
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus/alertrules.yml:/etc/prometheus/alertrules.yml
+      - ./prometheus/targets.json:/etc/prometheus/targets.json
+    command:
+      - '--storage.tsdb.path=/prometheus'
+      - '--storage.tsdb.retention.time=7d'
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    restart: always
+    networks:
+      - monitor
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - 3000:3000
+    depends_on:
+      - prometheus
+    restart: always
+    networks:
+      - monitor
+
+  node-exporter:
+    image: prom/node-exporter:latest
+    container_name: node-exporter
+    ports:
+      - 9100:9100
+    restart: always
+    networks:
+      - monitor
+
+  alertmanager:
+    image: prom/alertmanager:latest
+    container_name: alert-manager
+    ports:
+      - 9093:9093
+    volumes:
+      - ./alertmanager/alertmanager.yml:/etc/alertmanager/alertmanager.yml
+    command:
+      - --config.file=/etc/alertmanager/alertmanager.yml
+    restart: always
+    networks:
+      - monitor
+
+networks:
+  monitor:  
+    driver: bridge
+

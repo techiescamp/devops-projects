@@ -1,0 +1,17 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+            - "127.0.0.1:9093" 
+rule_files:
+  - alertrules.yml
+
+scrape_configs:
+- job_name: 'Host'
+  file_sd_configs:
+  - files:
+    - 'targets.json'
