@@ -1,0 +1,36 @@
+groups:
+- name: test
+  rules:
+  - alert: InstanceDown
+    expr: up == 0
+    for: 1m
+- name: HighCPUUsage
+  rules:
+  - alert: HighCpuUsage
+    expr: sum by(instance)(irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100 < 10
+    for: 1m
+    labels:
+      severity: warning
+    annotations:
+      summary: High CPU usage detected
+      description: "CPU usage on instance {{ $labels.instance }} has been above 90% for the last 5 minute."
+- name: HighMemoryUsage
+  rules:
+  - alert: HighMemoryUsage
+    expr: sum(container_memory_usage_bytes) by (namespace) > 90 * 1024 * 1024 * 1024
+    for: 1m
+    labels:
+      severity: warning
+    annotations:
+      summary: High Memory Usage in {{ $labels.namespace }}
+      description: 'The {{ $labels.namespace }} namespace is experiencing high memory usage.'
+- name: HighStorageUsage
+  rules:
+  - alert: HighStorageUsage
+    expr: (node_filesystem_size_bytes - node_filesystem_free_bytes) / node_filesystem_size_bytes > 0.9
+    for: 1m
+    labels:
+      severity: warning
+    annotations:
+      summary: High Storage Usage on {{ $labels.instance }}
+      description: 'The {{ $labels.instance }} host is experiencing high storage usage.'
