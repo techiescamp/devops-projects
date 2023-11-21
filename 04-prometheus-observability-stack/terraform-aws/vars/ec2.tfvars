@@ -1,20 +1,21 @@
 # EC2 Instance Variables
 region         = "us-west-2"
-ami_id         = "ami-05f290e7e87696c29"
-instance_type  = "t4g.nano"
-key_name       = ""
+ami_id         = "ami-03fd0aa14bd102718"
+instance_type  = "t4g.micro"
+key_name       = "techiescamp"
 instance_count = 1
-subnet_ids     = ["", "", ""]
+volume-size = 20
 
-# EC2 Security Group Variables
-vpc_id  = ""
+# VPC id
+vpc_id  = "vpc-0a5ca4a92c2e10163"
+subnet_ids     = ["subnet-058a7514ba8adbb07"]
 
-# Tag Keys
-name        = ""
-owner       = ""
-environment = ""
-cost_center = ""
-application = ""
+# Ec2 Tags
+name        = "prometheus-stack"
+owner       = "techiescamp"
+environment = "dev"
+cost_center = "techiescamp-commerce"
+application = "monitoring"
 
 # CIDR Ingress Variables
 create_ingress_cidr        = true

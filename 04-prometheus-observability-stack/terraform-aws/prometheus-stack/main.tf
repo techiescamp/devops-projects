@@ -16,6 +16,7 @@ module "ec2" {
   cost_center        = var.cost_center
   application        = var.application
   security_group_ids = module.security-group.security_group_ids
+  volume-size = var.volume-size
 }
 
 module "security-group" {
