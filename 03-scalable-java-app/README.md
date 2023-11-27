@@ -1,20 +1,15 @@
 
-## Status [In Progress]
-
-This project IaC code testing is in progress
-
-## Why you should do this project?
-
-Doing a custommized Ci/CD soltions will form a storng based on CI/CD implemention. Any tool you use would follow the same stragegy. Just that commands. script would have a difference that you can learn easily.
-
-Understanding things to consider in a CI/CD is very important than tooling.
-
-## Project Architecture
+## Scalable Java Application on AWS Using Terraform
 
 ![java-aws](https://user-images.githubusercontent.com/106984297/219648306-42c0d544-f6e6-423d-9802-9f3d5eca43e8.png)
 
+## Project Documentation & Walkthrough
 
-# Java Application
+Refer the following document for the step by step project walkthrough.
+
+**Project Documentation:** [Deploy Scalable Java Applications on AWS Using Terraform](https://devopscube.com/deploy-java-applications-aws-autoscaling/)
+
+## Java Application
 
 For this project you can use the open source pet clinic application (Java Spring Boot)
 
@@ -22,7 +17,7 @@ For this project you can use the open source pet clinic application (Java Spring
 https://github.com/spring-projects/spring-petclinic
 ```
 
-# Tools/Services 
+## Tools/Services 
 
 - DevOps Tools
   - Jenkins
@@ -36,7 +31,7 @@ https://github.com/spring-projects/spring-petclinic
   - AWS secrets manager
   - RDS (MySQL)
 
-# Project Workflow
+## Project Workflow
 
 - Build Java application
 - Use Packer & Ansible to build the AMI With application code
@@ -50,50 +45,6 @@ https://github.com/spring-projects/spring-petclinic
 - Verify application by accessing it using Load Balancer endpoint.
 - Verify application logs in Cloudwatch
 
-## Java Application 
-
-Spring boot Petclinic application
-
-```
-git clone https://github.com/techiescamp/java-spring-petclinic
-```
-
-Starting the application with externalized properties file.
-
-```
-java -jar spring-petclinic.jar --spring.config.location=/path/to/application.properties --spring.profiles.active=mysql
-```
-
-Log Location
-
-```
-/opt/petclinic.log
-```
-
-Change folder persmissions
-
-```
-sudo chown -R petclinic:petclinic /opt
-sudo chmod -R u+w /opt
-```
-
-## Useful Resources
+## Other Useful Resources
 
 1. [RDS password Rotation With Terraform](https://advancedweb.hu/how-to-set-up-amazon-rds-password-rotation-with-terraform/)
-
-
-### RDS
-
-terraform plan -var-file=../vars/rds.tfvars
-
-terraform apply -var-file=../vars/rds.tfvars
-
-terraform destroy -var-file=../vars/rds.tfvars
-
-### ALB_ASG
-
-terraform plan -var-file=../vars/alb-asg.tfvars
-
-terraform apply -var-file=../vars/alb-asg.tfvars
-
-terraform destroy -var-file=../vars/alb-asg.tfvars
