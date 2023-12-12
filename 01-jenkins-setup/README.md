@@ -1,6 +1,6 @@
 ## Project Course
 
-Detailed Video/Walkthrough Course: [techiescamp.com/courses/deploying-jenkins-aws/](https://techiescamp.com/courses/deploying-jenkins-aws/
+**Detailed Video/Walkthrough Course (Free):** [techiescamp.com/courses/deploying-jenkins-aws/](https://techiescamp.com/courses/deploying-jenkins-aws/
 )
 
 ## Setup Architecture 
