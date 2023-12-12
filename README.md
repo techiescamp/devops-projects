@@ -2,8 +2,6 @@
 
 DevOps Real World Projects for Aspiring DevOps Engineers [Beginner to Advanced]
 
-All the DevOps Real World Projects ideas are Documented in [Real World DevOps Projects](https://devopscube.com/devops-projects/) blog
-
 ## Hit the Star! ⭐
 If you are planning to use this repo for learning, please hit the star. Thanks!
 
@@ -28,6 +26,9 @@ The following are the best bundles to **save 27%** with code **DCUBE20**
 3. [Deploying a Scalable Java Application on AWS](https://github.com/techiescamp/devops-projects/tree/main/03-scalable-java-app)
 4. [Deploy Prometheus Observability stack using Docker Compose](https://github.com/techiescamp/devops-projects/tree/main/04-prometheus-observability-stack)
 5. [Design and Automate AWS VPC Creation Using Terraform](https://github.com/techiescamp/devops-projects/tree/main/05-aws-vpc-design-and-automation)
+
+
+> All the DevOps Real World Projects ideas and planned projects are Documented in [Real World DevOps Projects](https://devopscube.com/devops-projects/) Blog
 
 ## $300 AWS Free POC Cloud Credits
 
