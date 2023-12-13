@@ -54,6 +54,12 @@ We have created Terraform VPC modules for the requirements we outlined in the De
 
 **Terraform VPC Creation Documentation:** [Create AWS VPC Using Terraform](https://devopscube.com/terraform-aws-vpc/)
 
+## Further Learning References
+
+1. [One to Many: Evolving VPC Design](https://aws.amazon.com/blogs/architecture/one-to-many-evolving-vpc-design/)
+2. [AWS Network Connectivity Models](https://docs.aws.amazon.com/whitepapers/latest/hybrid-connectivity/connectivity-models.html)
+3. [AWS Hybrid Network Design Pattern](https://aws.amazon.com/blogs/apn/vmware-cloud-on-aws-hybrid-network-design-patterns/)
+
 
 
 
