@@ -43,7 +43,7 @@ terraform plan --var-file=../vars/ec2.tfvars
 5. Apply the changes to create the EC2 instance:
 
 ```bash
-terraform applu --var-file=../vars/ec2.tfvars
+terraform apply --var-file=../vars/ec2.tfvars
 ```
 
 6. To destroy the EC2 instance and associated resources:
