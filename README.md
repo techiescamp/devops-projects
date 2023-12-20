@@ -26,6 +26,7 @@ The following are the best bundles to **save 35% + Extra Discount** with code **
 3. [Deploying a Scalable Java Application on AWS](https://github.com/techiescamp/devops-projects/tree/main/03-scalable-java-app)
 4. [Deploy Prometheus Observability stack using Docker Compose](https://github.com/techiescamp/devops-projects/tree/main/04-prometheus-observability-stack)
 5. [Design and Automate AWS VPC Creation Using Terraform](https://github.com/techiescamp/devops-projects/tree/main/05-aws-vpc-design-and-automation)
+6. [AWS Client to Site VPN Setup](https://github.com/techiescamp/devops-projects/tree/main/06-aws-client-vpn-setup)
 
 
 > All the DevOps Real World Projects ideas and planned projects are Documented in [Real World DevOps Projects](https://devopscube.com/devops-projects/) Blog
