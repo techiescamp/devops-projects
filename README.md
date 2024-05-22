@@ -11,7 +11,7 @@ If you are planning to use this repo for learning, please hit the star. Thanks!
 
 As part of our commitment to helping the DevOps community save money on Kubernetes Certifications, we continuously update the latest voucher codes from the Linux Foundation
 
-🚀  CKA, CKAD, CKS, or KCNA exam aspirants can **save 40%** today using code **MAY24CT** at https://kube.promo/devops. It is a limited-time offer from the Linux Foundation.
+🚀  CKA, CKAD, CKS, or KCNA exam aspirants can **save 46%** today using code **MAY24SPECIALCT** at https://kube.promo/devops. It is a limited-time offer from the Linux Foundation.
 
 The following are the best bundles to **save up to 55% (up to $938)** with code **MAY24PLUSCT**
 
