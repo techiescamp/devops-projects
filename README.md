@@ -5,7 +5,7 @@ DevOps Real World Projects for Aspiring DevOps Engineers [Beginner to Advanced]
 ## Hit the Star! ⭐
 If you are planning to use this repo for learning, please hit the star. Thanks!
 
-## Kubernetes Certification Vouchers
+## Kubernetes Certification Coupon (40% OFF) 🎉
 
 As part of our commitment to helping the DevOps community save money on Kubernetes Certifications, we continuously update the latest voucher codes from the Linux Foundation
 
