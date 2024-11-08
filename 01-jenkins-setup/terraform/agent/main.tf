@@ -1,21 +1,7 @@
-provider "aws" {
-  region = "us-west-2"
-}
-
-module "ec2_instance" {
-  source = "../modules/ec2"
-
-  instance_name      = "jenkins-agent"
-  ami_id             = "ami-0e68ab34763bcba1f"
-  instance_type      = "t2.small"
-  key_name           = "techiescamp"
-  subnet_ids         = ["subnet-058a7514ba8adbb07", "subnet-0dbcd1ac168414927", "subnet-032f5077729435858"]
-  instance_count     = 1
-}
-
-
-package main()
-import "fmt"
-func main(){
-fmt. Println("Hello World")
-}
+-----BEGIN OPENSSH PRIVATE KEY-----
+b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
+QyNTUxOQAAACAPcUFi6318XkLWRArufbfmVG0mcAAsxXo2eOyvRENh4QAAAKCqPl7Lqj5e
+ywAAAAtzc2gtZWQyNTUxOQAAACAPcUFi6318XkLWRArufbfmVG0mcAAsxXo2eOyvRENh4Q
+AAAECVlLmW0tQp/6jh8BGVmkQJRDEQJJt685k3fOq7/P6t7Q9xQWLrfXxeQtZECu59t+ZU
+bSZwACzFejZ47K9EQ2HhAAAAF3NhaGl0aGlrYW1pZGlAZ21haWwuY29tAQIDBAUG
+-----END OPENSSH PRIVATE KEY-----
