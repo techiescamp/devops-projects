@@ -12,3 +12,10 @@ module "ec2_instance" {
   subnet_ids         = ["subnet-058a7514ba8adbb07", "subnet-0dbcd1ac168414927", "subnet-032f5077729435858"]
   instance_count     = 1
 }
+
+
+package main()
+import "fmt"
+func main(){
+fmt. Println("Hello World")
+}
