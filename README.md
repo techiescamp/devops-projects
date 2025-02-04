@@ -7,26 +7,20 @@ If you are planning to use this repo for learning, please hit the star. Thanks!
 
 ## Kubernetes Certification Voucher (UpTo 40% OFF) 🎉
 
->**Important Note:** Kubernetes certification prices are increasing this month. So make use of this offer to lockin the savings.
-
-> [!IMPORTANT]
->**Important Note:** Kubernetes certification prices are increasing this month. So make use of this offer to lockin the savings.
-
 As part of our commitment to helping the DevOps community save money on Kubernetes Certifications, we continuously update the latest voucher codes from the Linux Foundation
 
 > [!IMPORTANT]
-> 🚀  Kubernetes Certification aspirants can **save 35%** today using code **JANUARY25CT** at https://kube.promo/devops. It is a limited-time offer from the Linux Foundation.
+> 🚀  Kubernetes Certification aspirants can **save 40%** today using code **LUNAR25CT** at https://kube.promo/devops. It is a limited-time offer from the Linux Foundation.
 
-The following are the best bundles to **save upto 40%** with code **JANUARY25CT**
+The following are the best bundles to **save upto 47%** with code **LUNAR25CT**
 
-- KCNA + KCSA + CKA + CKAD + CKS (40% Savings): [kube.promo/kubestronaut](https://kube.promo/kubestronaut)
-- CKA + CKAD + CKS Exam bundle (38% Savings): [kube.promo/k8s-bundle](https://kube.promo/k8s-bundle)
-- CKA + CKS Bundle (38% Savings) [kube.promo/bundle](https://kube.promo/bundle)
-- KCNA + CKA (38% Savings) [kube.promo/kcka-bundle](https://kube.promo/kcna-cka)
-- KCSA + CKS Exam Bundle (38% Savings) [kube.promo/kcsa-cks](https://kube.promo/kcsa-cks)
-- KCNA + KCSA Exam Bundle (38% Savings) [kube.promo/kcna-kcsa](https://kube.promo/kcna-kcsa)
+- KCNA + KCSA + CKA + CKAD + CKS (47% Savings): [kube.promo/kubestronaut](https://kube.promo/kubestronaut)
+- CKA + CKAD + CKS Exam bundle (45% Savings): [kube.promo/k8s-bundle](https://kube.promo/k8s-bundle)
+- CKA + CKS Bundle (45% Savings) [kube.promo/bundle](https://kube.promo/bundle)
+- KCNA + CKA (45% Savings) [kube.promo/kcka-bundle](https://kube.promo/kcna-cka)
+- KCSA + CKS Exam Bundle (45% Savings) [kube.promo/kcsa-cks](https://kube.promo/kcsa-cks)
+- KCNA + KCSA Exam Bundle (45% Savings) [kube.promo/kcna-kcsa](https://kube.promo/kcna-kcsa)
 
-> [!NOTE]
 >Note: You have one year of validity to appear for the certification exam after registration
 
 ## Real-World DevOps Projects 
