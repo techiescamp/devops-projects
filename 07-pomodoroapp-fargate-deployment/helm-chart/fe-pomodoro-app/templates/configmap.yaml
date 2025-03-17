@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}
+  namespace: {{ .Release.Namespace }}
+data:
+  config.js: |
+    const config = {
+        apiUrl: "{{ .Values.backend_url }}",
+        reportsUrl: "{{ .Values.reports_url }}",
+        metrics_url: "{{ .Values.metrics_url }}",
+        jaeger_trace_url: "{{ .Values.jaeger_trace_url }}"
+    }
+    export default config;

@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}
+  namespace: {{ .Release.Namespace }}
+data:
+  config.js: |
+    const config = {
+      server: {
+        port: "{{ .Values.port }}"
+      },
+      database: {
+        mongoUrl: "{{ .Values.mongourl }}"
+      },
+      secrets: {
+        jwt_key: "{{ .Values.jwt_key }}"
+      },
+      session: {
+        secret: "{{ .Values.session_secret }}"
+      },
+      urls: {
+        baseUrl: "{{ .Values.frontend_url }}",
+        reportsUrl: "{{ .Values.report_backend_url }}"
+      },
+      observability: {
+        jaeger_trace_url: "{{ .Values.jaeger_trace_url }}"
+      }
+    }
+
+    module.exports = config;

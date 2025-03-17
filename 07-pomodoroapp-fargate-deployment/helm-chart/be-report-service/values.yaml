@@ -1,0 +1,30 @@
+replicaCount: 1
+
+image:
+  repository: techiescamp/pomodoro-report-backend
+  tag: "2.0.0"
+  pullPolicy: IfNotPresent
+
+service:
+  type: NodePort
+  port: 7070
+  nodeport: 30170
+
+configmap:
+  mountpath: /app/config.js
+  subpath: config.js
+
+secretName: backend-secrets
+
+resources:
+  requests:
+    cpu: 250m
+    memory: 256Mi
+  limits:
+    cpu: 1
+    memory: 1Gi
+
+## Configmap template file data
+port: 7070
+mongourl: mongodb://adminuser:password123@pomodoro-db.db-pomodoro.svc.cluster.local:27017/pomodoro?authSource=admin
+jaeger_trace_url: http://simplest-collector.observability.svc.cluster.local:14268

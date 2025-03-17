@@ -1,0 +1,43 @@
+replicaCount: 1
+
+image:
+  repository: techiescamp/pomodoro-backend
+  tag: "3.0.0"
+  pullPolicy: IfNotPresent
+
+service:
+  type: NodePort
+  port: 7000
+  nodeport: 30163
+
+configmap:
+  mountpath: /app/config.js
+  subpath: config.js
+
+secretName: backend-secrets
+
+resources:
+  requests:
+    cpu: 250m
+    memory: 256Mi
+  limits:
+    cpu: 1
+    memory: 1Gi
+
+## Configmap template file data
+port: 7000
+mongourl: mongodb://adminuser:password123@pomodoro-db.db-pomodoro.svc.cluster.local:27017/pomodoro?authSource=admin
+jwt_key: mysecret
+session_secret: supersecret
+frontend_url: http://10.0.0.10:32749
+report_backend_url: http://10.0.0.10:30170
+jaeger_trace_url: http://simplest-collector.observability.svc.cluster.local:14268
+
+## Network Policy
+policy:
+  frontend:
+    namespace: fr-pomodoro
+    appLabel: frontend
+  db:
+    namespace: db-pomodoro
+    appLabel: db
