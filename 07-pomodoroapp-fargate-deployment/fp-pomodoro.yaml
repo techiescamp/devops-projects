@@ -2,11 +2,19 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: eks-fargate-cluster
+  name: pomodoroapp-fargate
   region: us-east-1
 
 fargateProfiles:
   - name: fp-pomodoro
     selectors:
       - namespace: be-pomodoro
+        labels:
+          app: backend
+      - namespace: be-pomodoro
+        labels:
+          app: report-backend
       - namespace: fe-pomodoro
+        labels:
+          app: frontend
+

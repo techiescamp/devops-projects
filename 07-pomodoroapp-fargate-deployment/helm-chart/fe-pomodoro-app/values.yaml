@@ -3,7 +3,7 @@ replicaCount: 1
 image:
   repository: techiescamp/pomodoro-frontend
   tag: "3.0.0"
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
 
 configmap:
   mountpath: /app/src/config.js
@@ -15,7 +15,7 @@ service:
   nodeport: 32749
 
 ## Configmap template file data
-backend_url: http://10.0.0.10:30163
-reports_url: http://10.0.0.10:30170
-metrics_url: http://10.0.0.10:30163/metrics
+backend_url: http://10.0.3.221:30163
+reports_url: http://10.0.3.221:30170
+metrics_url: http://10.0.3.221:30163/metrics
 jaeger_trace_url: http://simplest-collector.observability.svc.cluster.local:14268

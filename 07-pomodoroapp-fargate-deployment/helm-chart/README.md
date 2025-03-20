@@ -5,14 +5,6 @@ Infra configs for Promodoro Application
 
 Make sure you are inside helm-chart directory and deploy helm charts in below order.
 
-### Deploy Database
-
-Modify the values.yaml file with your configuration and run the following command. Especially secret username and password
-
-```bash
-helm install pomodoro-db db-pomodoro-app -n db-pomodoro --create-namespace
-```
-
 ### Deploy Report Backend
 
 Modify the values.yaml file with your configuration and run the following command. Especially the mongourl under configmap template file data. If you change username and password in database, change it here as well.

@@ -3,7 +3,7 @@ replicaCount: 1
 image:
   repository: techiescamp/pomodoro-report-backend
   tag: "2.0.0"
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
 
 service:
   type: NodePort
@@ -13,8 +13,6 @@ service:
 configmap:
   mountpath: /app/config.js
   subpath: config.js
-
-secretName: backend-secrets
 
 resources:
   requests:
@@ -26,5 +24,5 @@ resources:
 
 ## Configmap template file data
 port: 7070
-mongourl: mongodb://adminuser:password123@pomodoro-db.db-pomodoro.svc.cluster.local:27017/pomodoro?authSource=admin
+mongourl: mongodb+srv://techiescamp:xuYLPYdWN2jp7mLr@db-pomodoro.irdkx.mongodb.net/?retryWrites=true&w=majority&appName=db-pomodoro
 jaeger_trace_url: http://simplest-collector.observability.svc.cluster.local:14268
