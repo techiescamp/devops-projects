@@ -1,5 +1,0 @@
-apiVersion: v2
-name: Pomodoro-Backend
-description: A Helm chart for Backend
-version: 0.1.0
-appVersion: "1.1.0"

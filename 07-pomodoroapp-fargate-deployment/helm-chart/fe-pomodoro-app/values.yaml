@@ -15,7 +15,4 @@ service:
   nodeport: 32749
 
 ## Configmap template file data
-backend_url: http://10.0.3.221:30163
-reports_url: http://10.0.3.221:30170
-metrics_url: http://10.0.3.221:30163/metrics
 jaeger_trace_url: http://simplest-collector.observability.svc.cluster.local:14268
