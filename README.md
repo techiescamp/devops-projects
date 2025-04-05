@@ -25,6 +25,8 @@ The following are the best bundles to **save 38% (up to $788)** with code **DCUB
 >⌛ Act fast—this limited-time offer won’t be around much longer!
 > You have one year of validity to appear for the certification exam after registration
 
+> If you Looking for an organized way to learn Kubernetes and prepare for the CKA exam? Check out our [Complete CKA Certification Course](https://techiescamp.com/p/cka-complete-prep-course-practice-tests). It includes illustrations, hands-on exercises, real-world examples, and dedicated Discord support. Use code **DCUBE25** to get 25% OFF! .
+
 ## Real-World DevOps Projects 
 
 1. [Jenkins HA Setup On AWS](https://github.com/techiescamp/devops-projects/tree/main/01-jenkins-setup)
