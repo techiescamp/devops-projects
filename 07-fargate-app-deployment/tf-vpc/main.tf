@@ -70,6 +70,7 @@ resource "aws_subnet" "private_subnet" {
   tags = {
     Name        = "${var.environment}-${element(var.availability_zones, count.index)}-private-subnet"
     Environment = "${var.environment}"
+    "kubernetes.io/role/elb" = "1"
   }
 }
 
