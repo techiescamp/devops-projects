@@ -1,0 +1,7 @@
+replicas: 3
+image:
+  repository: public.ecr.aws/l6m2t8p7/docker-2048
+  tag: latest
+service:
+  port: 80
+  type: LoadBalancer

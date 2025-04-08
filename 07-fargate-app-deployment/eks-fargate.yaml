@@ -1,0 +1,27 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: pomodoroapp-fargate
+  region: us-east-1
+
+vpc:
+  id: "vpc-09cda2c938e687f27"
+  cidr: "10.0.0.0/16"
+  subnets:
+    private:
+      us-east-1a: { id: subnet-045d0562c6a1d8233 }
+      us-east-1b: { id: subnet-06dd483abe9150717 }
+
+  clusterEndpoints:
+    publicAccess: false
+    privateAccess: true
+
+iam:
+  withOIDC: true
+
+fargateProfiles:
+  - name: fp-default
+    selectors:
+      - namespace: default
+      - namespace: kube-system
