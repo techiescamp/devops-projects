@@ -2,8 +2,8 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: pomodoroapp-fargate
-  region: us-east-1
+  name: private-fargate-cluster
+  region: us-west-2
 
 vpc:
   id: "vpc-09cda2c938e687f27"
