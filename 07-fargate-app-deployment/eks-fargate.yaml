@@ -25,3 +25,7 @@ fargateProfiles:
     selectors:
       - namespace: default
       - namespace: kube-system
+      
+  - name: fp-game
+    selectors:
+      - namespace: game-ns
