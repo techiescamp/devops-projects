@@ -21,12 +21,6 @@ The following are the best bundles to **save 38% (up to $788)** with code **DCUB
 - KCSA + CKS Exam Bundle ($229 Savings) [kube.promo/kcsa-cks](https://kube.promo/kcsa-cks)
 - KCNA + KCSA Exam Bundle ($203 Savings) [kube.promo/kcna-kcsa](https://kube.promo/kcna-kcsa)
 
-> [!NOTE]
->⌛ Act fast—this limited-time offer won’t be around much longer!
-> You have one year of validity to appear for the certification exam after registration
-
-> If you Looking for an organized way to learn Kubernetes and prepare for the CKA exam? Check out our [Complete CKA Certification Course](https://techiescamp.com/p/cka-complete-prep-course-practice-tests). It includes illustrations, hands-on exercises, real-world examples, and dedicated Discord support. Use code **DCUBE25** to get 25% OFF! .
-
 ## Real-World DevOps Projects 
 
 1. [Jenkins HA Setup On AWS](https://github.com/techiescamp/devops-projects/tree/main/01-jenkins-setup)
@@ -35,6 +29,7 @@ The following are the best bundles to **save 38% (up to $788)** with code **DCUB
 4. [Deploy Prometheus Observability stack using Docker Compose](https://github.com/techiescamp/devops-projects/tree/main/04-prometheus-observability-stack)
 5. [Design and Automate AWS VPC Creation Using Terraform](https://github.com/techiescamp/devops-projects/tree/main/05-aws-vpc-design-and-automation)
 6. [AWS Client to Site VPN Setup](https://github.com/techiescamp/devops-projects/tree/main/06-aws-client-vpn-setup)
+7. [Selft Hosted Pritunl VPN Setup on AWS](https://github.com/techiescamp/devops-projects/tree/main/07-pritunl-vpn-setup)
 
 
 > All the DevOps Real World Projects ideas and planned projects are Documented in [Real World DevOps Projects](https://devopscube.com/devops-projects/) Blog
