@@ -3,7 +3,7 @@
   hosts: all
   become: true
   remote_user: ubuntu
-
+#variable
   vars:
     public_key_path: "/devops-tools/jenkins/id_rsa.pub"
   
