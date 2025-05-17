@@ -9,27 +9,41 @@
     name: python3-pip
     state: present
 
-- name: Install boto3 using pip3
-  become: true
-  pip:
-    name: boto3
+- name: Install boto3 using apt
+  apt:
+    name: python3-boto3
+    state: present
+  become: yes
+
+- name: Install dependencies
+  apt:
+    name: 
+     - curl
+     - unzip
     state: present
 
-- name: Install AWS CLI using pip
-  become: true
-  pip:
-    name: awscli
-    state: latest
-    executable: pip3
+- name: Download AWS CLI installation script
+  shell: curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "/tmp/awscliv2.zip"
+
+- name: Unzip AWS CLI installation package
+  unarchive:
+     src: /tmp/awscliv2.zip
+     dest: /tmp/
+     remote_src: yes
+
+- name: Install AWS CLI
+  shell: sudo /tmp/aws/install
 
 - name: Install Ansible
-  pip:
+  apt:
     name: ansible
     state: latest
 
-- name: Add HashiCorp GPG key
-  become: yes
-  shell: "wget -qO- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg"
+- name: Download and convert HashiCorp GPG key in one step
+  shell: |
+   curl -fsSL https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+  args:
+    creates: /usr/share/keyrings/hashicorp-archive-keyring.gpg
 
 - name: Add HashiCorp APT repository
   become: yes

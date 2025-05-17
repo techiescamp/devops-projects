@@ -7,7 +7,7 @@
   vars:
     efs_mount_dir: "/data"
     jenkins_data_dir: "/data/jenkins"
-    jenkins_lts_version: "2.387.1"
+    jenkins_lts_version: "2.492.1"
 
 
   roles:

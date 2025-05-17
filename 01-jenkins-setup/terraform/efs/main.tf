@@ -1,9 +1,9 @@
 provider "aws" {
-  region = "us-west-2"
+  region = "us-east-1"
 }
 
 module "efs_module" {
   source = "../modules/efs"
-  vpc_id     = "vpc-0a5ca4a92c2e10163"
-  subnet_ids = ["subnet-058a7514ba8adbb07", "subnet-0dbcd1ac168414927", "subnet-032f5077729435858"]
+  vpc_id     = "vpc-0872a2ffd55e763ca"
+  subnet_ids = ["subnet-046c3f4390fc51b7e", "subnet-02727435b393c516c", "subnet-0ed1c80066f1be7ed"]
 }
