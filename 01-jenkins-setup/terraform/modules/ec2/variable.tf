@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "us-west-2"
+  region = "us-east-1"
 }
 
 variable "instance_name" {
@@ -19,7 +19,7 @@ variable "instance_type" {
 
 variable "key_name" {
   type = string
-  default = "techiescamp"
+  default = "jenkinskey"
 }
 
 variable "security_group_ids" {

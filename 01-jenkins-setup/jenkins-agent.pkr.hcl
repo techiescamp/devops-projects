@@ -1,6 +1,6 @@
 variable "ami_id" {
   type    = string
-  default = "ami-0735c191cf914754d"
+  default = "ami-04b4f1a9cf54c11d0"
 }
 
 variable "public_key_path" {
@@ -15,8 +15,8 @@ locals {
 source "amazon-ebs" "jenkins" {
   ami_name      = "${local.app_name}"
   instance_type = "t2.micro"
-  region        = "us-west-2"
-  availability_zone = "us-west-2a"
+  region        = "us-east-1"
+  availability_zone = "us-east-1c"
   source_ami    = "${var.ami_id}"
   ssh_username  = "ubuntu"
   iam_instance_profile = "jenkins-instance-profile"
@@ -31,7 +31,7 @@ build {
 
   provisioner "ansible" {
   playbook_file = "ansible/jenkins-agent.yaml"
-  extra_arguments = [ "--extra-vars", "public_key_path=${var.public_key_path}",  "--scp-extra-args", "'-O'", "--ssh-extra-args", "-o IdentitiesOnly=yes -o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedAlgorithms=+ssh-rsa" ]
+  extra_arguments = [ "--extra-vars", "public_key_path=${var.public_key_path}",  "--scp-extra-args", "'-O'", "--ssh-extra-args", "-o IdentitiesOnly=yes -o HostKeyAlgorithms=+ssh-rsa" ]
   } 
   
   post-processor "manifest" {
