@@ -15,8 +15,8 @@ locals {
 source "amazon-ebs" "jenkins" {
   ami_name      = "${local.app_name}"
   instance_type = "t2.micro"
-  region        = "us-east-1"
-  availability_zone = "us-east-1c"
+  region        = "us-west-2"
+  availability_zone = "us-west-2b"
   source_ami    = "${var.ami_id}"
   ssh_username  = "ubuntu"
   iam_instance_profile = "jenkins-instance-profile"
@@ -31,6 +31,7 @@ build {
 
   provisioner "ansible" {
   playbook_file = "ansible/jenkins-agent.yaml"
+  user          = "ubuntu"
   extra_arguments = [ "--extra-vars", "public_key_path=${var.public_key_path}",  "--scp-extra-args", "'-O'", "--ssh-extra-args", "-o IdentitiesOnly=yes -o HostKeyAlgorithms=+ssh-rsa" ]
   } 
   
