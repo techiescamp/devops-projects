@@ -30,8 +30,9 @@ The following are the best bundles to **save 38% (up to $788)** with code **DCUB
 5. [Design and Automate AWS VPC Creation Using Terraform](https://github.com/techiescamp/devops-projects/tree/main/05-aws-vpc-design-and-automation)
 6. [AWS Client to Site VPN Setup](https://github.com/techiescamp/devops-projects/tree/main/06-aws-client-vpn-setup)
 7. [Pritunl VPN Setup](https://github.com/techiescamp/devops-projects/tree/main/07-pritunl-vpn-setup)
-8. [GitHub Actions OIDC AWS Integration](https://github.com/techiescamp/devops-projects/tree/main/09-github-action-oidc-aws)
-9. [Setup AWS Route53 Private Hosted Zone](https://github.com/techiescamp/devops-projects/tree/main/10-route53-private-hosted-zone)
+8. [Fargate APP Deployment](https://github.com/techiescamp/devops-projects/tree/main/08-fargate-app-deployment)
+9. [GitHub Actions OIDC AWS Integration](https://github.com/techiescamp/devops-projects/tree/main/09-github-action-oidc-aws)
+10. [Setup AWS Route53 Private Hosted Zone](https://github.com/techiescamp/devops-projects/tree/main/10-route53-private-hosted-zone)
 
 
 > All the DevOps Real World Projects ideas and planned projects are Documented in [Real World DevOps Projects](https://devopscube.com/devops-projects/) Blog

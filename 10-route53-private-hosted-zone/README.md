@@ -1,6 +1,6 @@
 ## Setup AWS Route53 Private Hosted Zone
 
-![image](/10-route53-private-hosted-zone/Route53-PrivateHostedZone-linkedin.gif)
+![image](/10-route53-private-hosted-zone/image.png)
 
 ## Project Documentation
 
