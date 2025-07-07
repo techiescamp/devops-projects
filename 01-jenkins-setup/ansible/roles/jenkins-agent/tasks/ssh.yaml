@@ -3,7 +3,6 @@
   script: "{{ playbook_dir }}/scripts/get-ssh-pub.py {{ public_key_path }}"
   args:
     executable: /usr/bin/python3
-    remote_src: yes
   register: secret_value
 
 - name: Print registered variable
