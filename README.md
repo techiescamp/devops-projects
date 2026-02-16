@@ -9,8 +9,10 @@ If you are planning to use this repo for learning, please hit the star. Thanks!
 
 As part of our commitment to helping the DevOps community save money on Kubernetes Certifications, we continuously update the latest voucher codes from the Linux Foundation
 
+Get flat 35% discount on CKA, CKAD, CKS, KCNA etc
+
 > [!IMPORTANT]
-> 🚀  Kubernetes Certification aspirants can **save 35%** today using code **LUNAR26CT** at https://kube.promo/devops. It is a limited-time offer from the Linux Foundation.
+> 🚀  Use code **LUNAR26CT** at https://kube.promo/devops.
 
 The following are the best bundles to **save 50%** with code **LUNAR26BUNCT**
 
