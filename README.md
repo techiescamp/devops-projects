@@ -5,20 +5,22 @@ DevOps Real World Projects for Aspiring DevOps Engineers [Beginner to Advanced]
 ## Hit the Star! ⭐
 If you are planning to use this repo for learning, please hit the star. Thanks!
 
-## Kubernetes Certification Voucher (UpTo 40% OFF) 🎉
+## Kubernetes Certification Voucher (UpTo 50% OFF) 🎉
 
 If you are learning Kubernetes and preparing for Kubernetes certifications, these voucher codes will help you save money on your certification registration.
 
 CKA, CKAD, CKS, KCNA etc.. aspirants can **save 35%** today
 
 > [!IMPORTANT]
-> Use code **IWD26CT** at https://kube.promo/devops. It is a limited-time offer from the Linux Foundation.
+> Use code **PI26CT** at https://kube.promo/devops. It is a limited-time offer from the Linux Foundation.
 
-The following are the best bundles to **save 40%** with code **IWD26CT**
+The following are the best bundles to **save upto 50%** with code **PI26BUNCT**
 
 - CKA + CKAD: [kube.promo/cka-ckad](https://kube.promo/cka-ckad)
 - CKA + CKS Bundle: [kube.promo/bundle](https://kube.promo/bundle)
 - CKA + CKAD + CKS Exam bundle: [kube.promo/k8s-bundle](https://kube.promo/k8s-bundle)
+
+> Checkout all the latest bundle offers at [Linux Foundation Coupon](https://github.com/techiescamp/linux-foundation-coupon) repo.
 
 > [!NOTE]
 >⌛ Act fast—this limited-time offer won’t be around much longer!
