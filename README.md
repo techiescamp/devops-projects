@@ -38,7 +38,7 @@ Use code **DCUBE30** with the following bundles to **save upto 38%**
 - CKA + CKAD: [kube.promo/cka-ckad](https://kube.promo/cka-ckad)
 - CKA + CKS Bundle: [kube.promo/bundle](https://kube.promo/bundle)
 - CKA + CKAD + CKS Exam bundle: [kube.promo/k8s-bundle](https://kube.promo/k8s-bundle)
-
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------Thanks
 > Checkout all the latest bundle offers at [Linux Foundation Coupon](https://github.com/techiescamp/linux-foundation-coupon) repo.
 
 > [!NOTE]
