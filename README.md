@@ -60,7 +60,7 @@ Certifications like CKA, CKAD, CKS, KCNA, and KCSA help you:
 
 ## 🧠 **Purpose of the Repository**
 
-DevOps, MLOps, and SEO continue to evolve, but strong fundamentals remain essential. Modern engineers are expected to understand Linux, networking, cloud infrastructure, automation, Kubernetes, observability, security, and cost optimization. At the same time, practices such as Platform Engineering, GitOps, DevSecOps, and AI-assisted operations are becoming increasingly important in production environments.
+DevOps, MLOps, and SRE continue to evolve, but strong fundamentals remain essential. Modern engineers are expected to understand Linux, networking, cloud infrastructure, automation, Kubernetes, observability, security, and cost optimization. At the same time, practices such as Platform Engineering, GitOps, DevSecOps, and AI-assisted operations are becoming increasingly important in production environments.
 
 This repository helps you build those skills through hands-on projects and real-world examples. Each project is designed to provide practical experience with cloud platforms, Infrastructure as Code, containerization, Kubernetes, monitoring, CI/CD, and deployment automation using tools commonly used in modern production systems.
 
