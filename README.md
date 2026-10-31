@@ -13,7 +13,7 @@ If you are planning to use this repo for learning, please hit the star. Thanks!
 * [DevOps Project Videos](#devops-project-videos)
 
 
-## Kubernetes Certification Voucher (UpTo 45% OFF) 🎉
+## Kubernetes Certification Voucher (UpTo 35% OFF) 🎉
 If you are learning DevOps in 2026, building projects is important. But validating your skills with industry-recognized certifications is also important.
 
 Especially in today’s IT market where companies are looking for engineers who can actually work with Kubernetes, cloud-native tooling, automation, observability, and platform engineering.
@@ -28,12 +28,12 @@ Certifications like CKA, CKAD, CKS, KCNA, and KCSA help you:
 
 If you are preparing for Kubernetes certifications, these voucher codes can help you save money on exam registrations.
 
-CKA, CKAD, CKS, KCNA etc.. aspirants can **save 35%** today
+CKA, CKAD, CKS, KCNA etc.. aspirants can **save 30%** today
 
 > [!IMPORTANT]
-> Use code **TREATS35CT** at https://kube.promo/devops. It is a limited-time offer from the Linux Foundation.
+> Use code **DCUBE30** at https://kube.promo/devops. It is a limited-time offer from the Linux Foundation.
 
-Use code **TREATS35CT** with the following bundles to **save upto 45%**
+Use code **DCUBE30** with the following bundles to **save upto 35%**
 
 - CKA + CKAD: [kube.promo/cka-ckad](https://kube.promo/cka-ckad)
 - CKA + CKS Bundle: [kube.promo/bundle](https://kube.promo/bundle)
